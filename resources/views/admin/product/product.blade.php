@@ -7,7 +7,6 @@
 <div class="wrapper">
 
 @include('admin.nav')
-@include('admin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -41,6 +40,10 @@
           			<button class="btn btn-success">Search</button>
       			</div>
       		</form>
+      	</div>
+      	
+      	<div class="my-2">
+      		<button class="btn btn-success">Create</button>
       	</div>
         <!-- Small boxes (Stat box) -->
 		<table class="table table-bordered">
@@ -76,7 +79,8 @@
         <td>#</td>
         <td>#</td>
         <td>
-	        <button class="btn btn-success">View</button>
+	        <button class="btn btn-success btn-sm">View</button>
+	        <butoon class="btn btn-success btn-sm">Edit</butoon>
         </td>
       </tr>
     </tbody>
