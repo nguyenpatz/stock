@@ -3,48 +3,7 @@
 <head>
 @include('admin.head')
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-@include('admin.nav')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Product</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Product</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      	<div class="row my-2">
-      		<form class="col-5 row">
-      			<div class="col-7">
-          			<input class="form-control" placeholder="Input data ...">
-      			</div>
-      			<div class="col-3">
-          			<button class="btn btn-success">Search</button>
-      			</div>
-      		</form>
-      	</div>
-      	
-      	<div class="my-2">
-      		<button class="btn btn-success">Create</button>
-      	</div>
+@include('admin.main')
         <!-- Small boxes (Stat box) -->
 		<table class="table table-bordered">
     		<thead>
@@ -59,40 +18,40 @@
         <th>Heigth</th>
         <th>Width</th>
         <th>Length</th>
-        <th>Weigth</th>
+        <th>Weight</th>
         <th>Color</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
+	@foreach($news as $row)
       <tr>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
+        <td><a href="/admin/product/{{$row->id}}">{{$row->name}}</a></td>
+        <td>{{$row->template_id}}</td>
+        <td>{{$row->price}}</td>
+        <td>{{$row->price_cost}}</td>
+        <td>{{$row->data_manufacture}}</td>
+        <td>{{$row->expery}}</td>
+        <td>{{$row->state}}</td>
+        <td>{{$row->height}}</td>
+        <td>{{$row->width}}</td>
+        <td>{{$row->length}}</td>
+        <td>{{$row->weight}}</td>
+        <td>{{$row->color}}</td>
         <td>
 	        <button class="btn btn-success btn-sm">View</button>
-	        <butoon class="btn btn-success btn-sm">Edit</butoon>
+	        <button class="btn btn-success btn-sm">Edit</button>
         </td>
       </tr>
+    @endforeach
     </tbody>
   </table>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+
+      </div>
     </section>
     <!-- /.content -->
   </div>
 </div>
-  <!-- /.content-wrapper -->
 @include('admin.footer')
-<script src="dist/js/pages/dashboard.js"></script>
 </body>
 </html>

@@ -28,6 +28,11 @@ Route::get('product', [
     'index'
 ]);
 
+Route::get('/admin/product/{id}', [
+    ProductController::class,
+    'show'
+]);
+
 Route::get('template', [
     TemplateController::class,
     'index'
@@ -51,6 +56,26 @@ Route::get('ipep', [
 Route::get('invoice', [
     InvoiceController::class,
     'index'
+]);
+
+Route::get('invoice/create', [
+    InvoiceController::class,
+    'create'
+]);
+
+Route::get('invoice/edit/{id}', [
+    InvoiceController::class,
+    'edit'
+]);
+
+Route::get('invoice/update/{id}', [
+    InvoiceController::class,
+    'update'
+]);
+
+Route::get('invoice/unlink/{id}', [
+    InvoiceController::class,
+    'destroy'
 ]);
 
 Route::get('invoice_line', [

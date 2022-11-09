@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return view('admin.product.product', [
-            'title' => "Product"
-        ]);
+        $products = DB::table('product')->select('*');
+        $products = $products->get();
+        $title = 'Products';    
+        return view('/admin/product', compact('products', 'title'));
+    }
+
+    public function show($id)
+    {
+        $products = product::where('id', '=', $id)->select('*')->first();
+        $des = html_entity_decode($news->description);
+        return view('/admin/productdetail', compact('products', 'des'));
     }
 }

@@ -11,10 +11,9 @@
   'use strict'
 
   setTimeout(function () {
-    if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
-      localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
-      // eslint-disable-next-line no-alert
-      alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
+    if (window.___browserSync___ === undefined && Number(localStorage.getItem('MessageShowed')) < Date.now()) {
+      localStorage.setItem('MessageShowed', (Date.now()) + (15 * 60 * 1000))
+      alert('Hello World')
     }
   }, 1000)
 
