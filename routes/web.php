@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Order\OrderLineController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\Invoice\InvoiceLineController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseController;
+use App\Http\Controllers\Admin\IP_EP\IpEpController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseInventoryController;
 
 Route::get('login', [
@@ -48,9 +49,19 @@ Route::get('order', [
     'index'
 ]);
 
+Route::get('order/{id}', [
+    OrderController::class,
+    'show'
+]);
+
 Route::get('ipep', [
-    ImportExportController::class,
+    IpEpController::class,
     'index'
+]);
+
+Route::get('ipep/{id}', [
+    IpEpController::class,
+    'show'
 ]);
 
 Route::get('invoice', [
@@ -58,12 +69,18 @@ Route::get('invoice', [
     'index'
 ]);
 
-Route::get('invoice/invoice_create', [
+Route::get('invoice/{id}', [
     InvoiceController::class,
-    'create'
+    'show'
 ]);
 
-Route::get('invoice/edit/{id}', [
+Route::get('/admin/invoice/create',[InvoiceController ::class,'create']);
+// Route::post('invoice/store',[
+//     InvoiceController::class,
+//     'store'
+// ]);
+
+Route::get('/admin/invoice/edit/{id}', [
     InvoiceController::class,
     'edit'
 ]);
