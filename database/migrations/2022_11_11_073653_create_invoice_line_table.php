@@ -13,10 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_line', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('invoice_line')) {
+
+            Schema::create('invoice_line', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('product_id')->constrained('product');
+                $table->foreignId('invoice_id')->constrained('invoice');
+                $table->double('total_money');
+                $table->integer('amount');
+                $table->double('unit_price');
+                $table->text('note');
+            });
+        }
     }
 
     /**
