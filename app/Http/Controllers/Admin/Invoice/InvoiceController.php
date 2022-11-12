@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Invoice;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Invoice;
+
 
 class InvoiceController extends Controller
 {
@@ -11,19 +14,19 @@ class InvoiceController extends Controller
         $invoices = DB::table('invoice')->select('*');
         $invoices = $invoices->get();
         $title = 'Invoices';
-        return view('/admin/invoice', compact('invoices', 'title'));
+        return view('/admin/invoice/invoice', compact('invoices', 'title'));
     }
     
     public function show($id)
     {
-        $invoices = invoice::where('id', '=', $id)->select('*')->first();
-        $des = html_entity_decode($news->description);
-        return view('/admin/invoice_detail', compact('invoices', 'des'));
+        $invoices = Invoice::where('id', '=', $id)->select('*')->first();
+        $des = html_entity_decode($invoices->description);
+        return view('/admin/invoice/invoice_detail', compact('invoices', 'des'));
     }
 
     public function create()
     {
-        return view('/admin/invoice_create');
+        return view('/admin/invoice/invoice_create');
     }
 
     public function store(Request $request)

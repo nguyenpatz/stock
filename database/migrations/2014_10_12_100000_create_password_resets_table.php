@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('bank_account')) {
-            
-            Schema::create('bank_account', function (Blueprint $table) {
-                $table->id();
-                $table->text('name');
-                $table->string('number_account');
-            });
-        }
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
     }
 
     /**
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account');
+        Schema::dropIfExists('password_resets');
     }
 };
