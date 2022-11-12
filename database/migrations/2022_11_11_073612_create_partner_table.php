@@ -13,10 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partner', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('partner')) {
+            Schema::create('partner', function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->text('address');
+                $table->string('phone');
+                $table->string('email');
+                $table->text('note');
+                $table->date('birthday');
+                $table->foreignId('bank_id')->constrained('bank_account');
+                
+            });
+        }
     }
 
     /**
@@ -26,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partner');
+        // Schema::dropIfExists('partner');
     }
 };

@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('employee')) {
+            
+            Schema::create('employee', function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->text('address');
+                $table->string('email');
+                $table->string('phone');
+                $table->binary('avatar');
+            });
+        }
     }
 
     /**
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee');
+        // Schema::dropIfExists('employee');
     }
 };

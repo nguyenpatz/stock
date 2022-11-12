@@ -13,10 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('import__export', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('import__export')) {
+            Schema::create('import__export', function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->text('delivery_address');
+                $table->dateTime('received_date');
+                $table->dateTime('delivery_date');
+                $table->foreignId('partner_id')->constrained('partner');
+                $table->text('status');
+            });
+        } else {
+            Schema::dropIfExists('import__export');
+        }
     }
 
     /**

@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bank_account', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('bank_account')) {
+            
+            Schema::create('bank_account', function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->string('number_account');
+            });
+        }
     }
 
     /**
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account');
+        // Schema::dropIfExists('bank_account');
     }
 };

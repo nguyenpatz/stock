@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('product_category', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('parent_id')->constrained('product_category');
+            // $table->foreign('parent_id')->references('id')->on('');
+            // $table->integer('warehouse_id');
+            // $table->foreign('warehouse_id')->references('id')->on('warehouse');
+            $table->foreignId('warehouse_id')->constrained('warehouse');
         });
     }
 
