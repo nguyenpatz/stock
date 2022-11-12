@@ -22,8 +22,8 @@ return new class extends Migration
                 $table->string('email');
                 $table->text('note');
                 $table->date('birthday');
-                $table->foreignId('bank_id')->constrained('bank_account');
-                
+                $table->intenger('bank_id');
+                $table->foreign('bank_id')->references('id')->on('bank_account');
             });
         }
     }

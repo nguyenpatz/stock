@@ -58,7 +58,7 @@ Route::get('invoice', [
     'index'
 ]);
 
-Route::get('invoice/create', [
+Route::get('invoice/invoice_create', [
     InvoiceController::class,
     'create'
 ]);
