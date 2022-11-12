@@ -38,10 +38,16 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/template/admin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container-fluid px-0" style="position: fixed; bottom:0">
+
+  <footer class="bg-light text-center">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://hoangminhlogistic.com/">hoangminhlogistic.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+  
+</div>
