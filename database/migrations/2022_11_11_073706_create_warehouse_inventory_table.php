@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('quantity_checked');
             $table->date('date');
             $table->json('history');
-            $table->text('note');
-            $table->integer('deviant');
+            $table->text('note')->nullable();
+            $table->integer('deviant')->nullable();
             $table->text('state');
 
         });

@@ -16,14 +16,16 @@ return new class extends Migration
         if(!Schema::hasTable('partner')) {
             Schema::create('partner', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('bank_id')->constrained('bank_account');
                 $table->text('name');
                 $table->text('address');
                 $table->string('phone');
                 $table->string('email');
-                $table->text('note');
+                $table->text('note')->nullable();
                 $table->date('birthday');
-                $table->intenger('bank_id');
-                $table->foreign('bank_id')->references('id')->on('bank_account');
+                // $table->intenger('bank_id');
+                // $table->foreign('bank_id')->references('id')->on('bank_account');
+
             });
         }
     }

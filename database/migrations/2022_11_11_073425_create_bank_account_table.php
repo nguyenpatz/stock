@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->text('name');
                 $table->string('number_account');
             });
-        }
+        } 
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account');
+        // Schema::dropIfExists('bank_account');
     }
 };

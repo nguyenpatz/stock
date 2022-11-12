@@ -22,7 +22,7 @@ return new class extends Migration
                 $table->double('total_money');
                 $table->integer('amount');
                 $table->double('unit_price');
-                $table->text('note');
+                $table->text('note')->nullable();
             });
         }
     }

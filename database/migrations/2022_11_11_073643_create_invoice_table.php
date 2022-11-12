@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('date_payment');
             $table->text('payment_term');
             $table->double('total_payment');
-            $table->double('debt');
+            $table->double('debt')->nullable();
             $table->text('state');
         });
     }

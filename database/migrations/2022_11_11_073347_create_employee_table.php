@@ -21,7 +21,7 @@ return new class extends Migration
                 $table->text('address');
                 $table->string('email');
                 $table->string('phone');
-                $table->binary('avatar');
+                $table->binary('avatar')->nullable();
             });
         }
     }
