@@ -36,8 +36,9 @@
       	</div>
       	
       	<div class="container-fluid row my-2 d-flex justify-content-between pl-0">
-      		<button class="btn btn-success">Create</button>
-      		
+      		<a href="/invoice/create">
+      			<button class="btn btn-success">Create</button>
+      		</a>
       		<div class="row">
 				<button class="btn btn-primary mx-1 btn-sm rounded-pill">Prev</button>
       			<div class="row mx-1">

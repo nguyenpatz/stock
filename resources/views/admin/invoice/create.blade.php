@@ -1,6 +1,6 @@
 @include('admin.head')
 </head>
-<form method="post" action="/invoice/store" class="form-group container mt-5">
+<form method="post" action="/invoice/create" class="form-group container mt-5">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
  <div class="row">
  	<div class="col-6">
@@ -13,9 +13,16 @@
 			<select class="form-control" name="partner_id" aria-label="Default select example">
 				<option selected>Open this select menu</option>
 				@foreach($partners as $row)
-					<option value="{{$row->name}}">{{$row->id}}</option>
+					<option value="{{$row->id}}">{{$row->name}}</option>
 				@endforeach
-</select>	
+			</select>
+
+			<select class="form-control" name="order_id" aria-label="Default select example">
+				<option selected>Open this select menu</option>
+				@foreach($orders as $row)
+					<option value="{{$row->id}}">{{$row->name}}</option>
+				@endforeach
+			</select>	
     	</p>
  		<p>
         	<label for="title">Create Date</label><br>
@@ -24,6 +31,10 @@
  		<p>
         	<label for="title">Date Payment</label><br>
         	<input type="datetime-local" class="form-control" name="date_payment" value="">
+    	</p>
+ 		<p>
+        	<label for="title">Debt</label><br>
+        	<input type="number" class="form-control" name="debt" value="">
     	</p>
  	</div>
  	<div class="col-6">

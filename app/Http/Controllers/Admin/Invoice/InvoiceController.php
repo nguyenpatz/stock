@@ -34,8 +34,10 @@ class InvoiceController extends Controller
     public function create()
     {
         $partners = DB::table('partners')->select('*');
-        $lines = $lines->get();
-        return view('/admin/invoice/create');
+        $partners = $partners->get();
+        $orders = DB::table('order')->select('*');
+        $orders = $orders->get();
+        return view('/admin/invoice/create', compact('partners','orders'));
     }
 
     public function store(Request $request)
@@ -57,8 +59,9 @@ class InvoiceController extends Controller
 //             'total_payment' => $total_payment,
 //             'state' => $state
 //         ]);
-//         action([InvoiceController::class, 'create']);
-//         return Redirect::action([InvoiceController::class, 'create']);     
+        $data = $request->all();
+        Invoice::create($data);
+        echo '<script>alert("Successfull")</script>';
     }
 
     public function edit($id)

@@ -69,16 +69,21 @@ Route::get('invoice', [
     'index'
 ]);
 
+Route::get('invoice/create', [
+    InvoiceController::class,
+    'create'
+]);
+
+Route::post('invoice/create', [
+    InvoiceController::class,
+    'store'
+]);
+
 Route::get('invoice/{id}', [
     InvoiceController::class,
     'show'
 ]);
 
-Route::get('/admin/invoice/create',[InvoiceController ::class,'create']);
-// Route::post('invoice/store',[
-//     InvoiceController::class,
-//     'store'
-// ]);
 
 Route::get('/admin/invoice/edit/{id}', [
     InvoiceController::class,
