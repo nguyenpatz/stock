@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="container row rounded border p-4">
 		<div class="col-2">
-			<button class="btn btn-info" style="width: 70px">Edit</button>
+			<a href="/invoice/edit/{{$invoices->id}}"><button class="btn btn-info" style="width: 70px">Edit</button></a>
 			<button class="btn btn-danger">Unlink</button>
 			<button class="btn btn-success mt-1" style="width: 70px">Done</button>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>

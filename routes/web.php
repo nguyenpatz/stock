@@ -79,6 +79,16 @@ Route::post('invoice/create', [
     'store'
 ]);
 
+Route::get('invoice/edit/{id}', [
+    InvoiceController::class,
+    'edit'
+]);
+
+Route::post('invoice/update/{id}', [
+    InvoiceController::class,
+    'update'
+]);
+
 Route::get('invoice/{id}', [
     InvoiceController::class,
     'show'

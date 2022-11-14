@@ -42,23 +42,6 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-//         $name = $request->name;
-//         $partner_id = $request->partner_id;
-//         $create_date = $request->create_date;
-//         $date_payment = $request->date_payment;
-//         $payment_term = $request->payment_term;
-//         $total_payment = $request->total_payment;
-//         $state = $request->state;
-
-//         DB::table('invoice')->insert([
-//             'name' => $name,
-//             'partner_id' => $partner_id,
-//             'create_date' => $create_date,
-//             'date_payment' => $date_payment,
-//             'payment_term' => $payment_term,
-//             'total_payment' => $total_payment,
-//             'state' => $state
-//         ]);
         $data = $request->all();
         Invoice::create($data);
         echo '<script>alert("Successfull")</script>';
@@ -66,24 +49,25 @@ class InvoiceController extends Controller
 
     public function edit($id)
     {
-        $invoices = invoice::findOrFail($id);
-        $title = 'Invoices - Update';
-        return view('/admin/invoices_update', compact('invoices', 'pageName'));
+        $partners = DB::table('partners')->select('*');
+        $partners = $partners->get();
+        $orders = DB::table('order')->select('*');
+        $orders = $orders->get();
+        $invoice = Invoice::findOrFail($id);
+        
+        // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi
+        return view('admin/invoice/edi', compact('invoice','partners','orders'));
     }
     
-    public function update(Request $request, $id)
-    {
-        $invoices = invoice::find($id);
-        $invoices->name = $request->name;
-        $invoices->partner_id = $request->partner_id;
-        $invoices->create_date = $request->create_date;
-        $invoices->date_payment = $request->date_payment;
-        $invoices->payment_term = $request->payment_term;
-        $invoices->total_payment = $request->total_payment;
-        $invoices->state = $request->state;
+    public function update(Request $request, $id){
+        // Tìm đến đối tượng muốn update
+        $invoices = Invoice::findOrFail($id);
+        
+        // gán dữ liệu gửi lên vào biến data
+        $data = $request->all();
         
         $invoices->save();
-        return redirect()->action('Admin\Invoice\InvoiceController@index');
+        echo"success update invoice";
     }
 
     public function destroy($id)
