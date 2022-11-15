@@ -1,12 +1,12 @@
 @include('admin.head')
 </head>
-<form method="post" action="/order/store" class="form-group container mt-5">
+<form method="post" action="/order/update/{{$order->id}}" class="form-group container mt-5">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
  <div class="row">
  	<div class="col-6">
  		<p>
         	<label for="title">Name</label><br>
-        	<input type="text" class="form-control" name="name" value="">
+        	<input type="text" class="form-control" name="name" value="{{$order->name}}">
     	</p>
  		<p>
         	<label for="title">Partner</label><br>
@@ -19,15 +19,15 @@
     	</p>
  		<p>
         	<label for="title">Create Date</label><br>
-        	<input type="datetime-local" class="form-control" name="create_date" value="">
+        	<input type="datetime-local" class="form-control" name="create_date" value="{{$order->create_date}}">
     	</p>
  		<p>
         	<label for="title">Expiration Date</label><br>
-        	<input type="datetime-local" class="form-control" name="expiration_date" value="">
+        	<input type="datetime-local" class="form-control" name="expiration_date" value="{{$order->expiration_date}}">
     	</p>
  		<p>
         	<label for="title">Received Date</label><br>
-        	<input type="datetime-local" class="form-control" name="received_date" value="">
+        	<input type="datetime-local" class="form-control" name="received_date" value="{{$order->received_date}}">
     	</p>
  	</div>
  	<div class="col-6">
@@ -42,7 +42,7 @@
     	</p>
  		<p>
         	<label for="title">Payment term</label><br>
-        	<input type="text" class="form-control" name="payment_term" value="">
+        	<input type="text" class="form-control" name="payment_term" value="{{$order->payment_term}}">
     	</p>
     	<p>
         	<button type="submit" class="form-control btn btn-success">Submit</button>

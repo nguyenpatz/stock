@@ -26,8 +26,6 @@ return new class extends Migration
             $table->text('color')->nullable();
             $table->double('price');
             $table->double('price_cost');
-            $table->date('date_manufacture');
-            $table->date('expiry_date');
         });
     }
 

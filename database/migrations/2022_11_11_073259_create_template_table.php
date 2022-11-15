@@ -19,6 +19,8 @@ return new class extends Migration
                 $table->id();
                 $table->text('name');
                 $table->foreignId('category_id')->constrained('product_category');
+                $table->date('date_manufacture');
+                $table->date('expiry_date');
                 $table->text('note')->nullable();
             });
         // } else {

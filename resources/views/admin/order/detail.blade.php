@@ -34,7 +34,8 @@
 			<div class="bg-light rounded-circle d-flex justify-content-center py-3">{{$orders->state}}</div>
 		</div>
 	</div>
-	<div class="container mt-2">
+<div class="container mt-2">
+	<button class="btn btn-info">Add</button>
 	<table class="table table-bordered">
         <thead>
          <tr class="bg-success">
@@ -42,6 +43,8 @@
             <th>Product</th>
             <th>Amount</th>
             <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +54,10 @@
             <td>{{$row->product_id}}</td>
             <td>{{$row->amount}}</td>
             <td>{{$row->price}}</td>
+            <td>Tong</td>
+            <td>
+            	<a>Edit</a><a>Remove</a>
+            </td>
           </tr>
            @endforeach
         </tbody>
