@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 class InvoiceController extends Controller
 {
     public function index() {
-        $invoices = DB::table('invoice')->join('partners','partners.id','=','invoice.partner_id')->select('*','partners.name as ptname','invoice.name as ivname');
+        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->select('*','partner.name as ptname','invoice.name as ivname');
         $invoices = $invoices->get();
         $header = 'Invoices';
         $breadcrumb_item = 'Invoices';
@@ -33,7 +33,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        $partners = DB::table('partners')->select('*');
+        $partners = DB::table('partner')->select('*');
         $partners = $partners->get();
         $orders = DB::table('order')->select('*');
         $orders = $orders->get();
@@ -49,7 +49,7 @@ class InvoiceController extends Controller
 
     public function edit($id)
     {
-        $partners = DB::table('partners')->select('*');
+        $partners = DB::table('partner')->select('*');
         $partners = $partners->get();
         $orders = DB::table('order')->select('*');
         $orders = $orders->get();
