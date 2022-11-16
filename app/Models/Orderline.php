@@ -13,6 +13,7 @@ class Orderline extends Model
         'name',
         'order_id',
         'product_id',
+        'create_date',
         'amount',
         'price',
         'total',

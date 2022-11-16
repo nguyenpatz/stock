@@ -19,7 +19,6 @@ class Order extends Model
         'total_payment',
         'payment_term',
         'state',
-        'duration_inventory'
     ];
     public $timestamps = False;
     protected $defaults = array(

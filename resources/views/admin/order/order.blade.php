@@ -15,10 +15,8 @@
         <th>Create Date</th>
         <th>Expiration Date</th>
         <th>Received Date</th>
-        <th>Duration Inventory</th>
         <th>Employee</th>
         <th>Total Payment</th>
-        <th>Payment Term</th>
         <th>State</th>
       </tr>
     </thead>
@@ -30,10 +28,8 @@
         <td>{{ $row->create_date }}</td>
         <td>{{$row->expiration_date }}</td>
         <td>{{ $row->received_date }}</td>
-        <td>{{ $row->duration_inventory }}</td>
         <td>{{ $row->epname }}</td>
         <td>{{ $row->total_payment }}</td>
-        <td>{{ $row->payment_term }}</td>
         <td>{{ $row->state }}</td>
       </tr>
       @endforeach

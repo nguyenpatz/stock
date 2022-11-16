@@ -36,7 +36,7 @@
       	</div>
       	
       	<div class="container-fluid row my-2 d-flex justify-content-between pl-0">
-      		<a href="/order/create">
+      		<a href="/order_create">
       			<button class="btn btn-success">Create</button>
       		</a>
       		<div class="row">

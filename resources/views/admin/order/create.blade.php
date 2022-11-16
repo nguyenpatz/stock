@@ -28,10 +28,6 @@
         	<label for="title">Received Date</label><br>
         	<input type="datetime-local" class="form-control" name="received_date" value="">
     	</p>
- 		<p>
-        	<label for="title">Inventory Date</label><br>
-        	<input type="datetime-local" class="form-control" name="duration_inventory" value="">
-    	</p>
  	</div>
  	<div class="col-6">
  		<p>

@@ -54,17 +54,27 @@ Route::get('order/{id}', [
     'show'
 ]);
 
-Route::get('order/update/{id}', [
+Route::post('order_update/{id}', [
     OrderController::class,
     'update'
 ]);
 
-Route::get('order/edit/{id}', [
+Route::get('order_edit/{id}', [
     OrderController::class,
     'edit'
 ]);
 
-Route::get('order/new/create', [
+Route::post('orderline_update/{id}', [
+    OrderLineController::class,
+    'update'
+]);
+
+Route::get('orderline_edit/{id}', [
+    OrderLineController::class,
+    'edit'
+]);
+
+Route::get('order_create', [
     OrderController::class,
     'create'
 ]);
@@ -75,7 +85,7 @@ Route::post('order/store', [
     'store'
 ]);
 
-Route::get('order/newline/new', [
+Route::get('orderline_create/{id}', [
     OrderLineController::class,
     'create'
 ]);
@@ -125,6 +135,10 @@ Route::get('invoice/{id}', [
     'show'
 ]);
 
+Route::get('create_invoice_from_order/{oid}',[
+    OrderController::class,
+    'create_invoice'
+]);
 
 Route::get('/admin/invoice/edit/{id}', [
     InvoiceController::class,

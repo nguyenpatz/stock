@@ -21,7 +21,7 @@ class InvoiceController extends Controller
     
     public function show($id)
     {
-        $invoices = DB::table('invoice')->join('partners','partners.id','=','invoice.partner_id')->where('invoice.id','=', $id)->select('*','partners.name as ptname','invoice.name as ivname')->first();
+        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->where('invoice.id','=', $id)->select('*','partner.name as ptname','invoice.name as ivname')->first();
        // $invoices = DB::table('invoice')->where('id', '=', $id)->select('*')->first();
         $lines = DB::table('invoice_line')->join('product', 'product.id', '=', 'invoice_line.product_id')
         ->where('invoice_line.id','=',$id)->select('*');

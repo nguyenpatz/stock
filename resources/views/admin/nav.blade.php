@@ -10,13 +10,13 @@
         <a href="partner" class="nav-link">Contact</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="order" class="nav-link">Order</a>
+        <a href="/order" class="nav-link">Order</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="product" class="nav-link">Product</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="invoice" class="nav-link">Invoice</a>
+        <a href="/invoice" class="nav-link">Invoice</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="warehouse" class="nav-link">Warehouse</a>

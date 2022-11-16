@@ -14,9 +14,8 @@ class OrderLineController extends Controller
             'title' => 'OrderLine'
         ]);
     }
-    public function create()
+    public function create($id)
     {   
-        $id = 3;
         $products = DB::table('product')->select('*');
         $products = $products->get();
         return view('admin.order.order_line', compact('products','id'));
@@ -27,5 +26,26 @@ class OrderLineController extends Controller
         $data = $request->all();
         Orderline::create($data);
         echo '<script>alert("Successfull")</script>';
+    }
+
+    public function edit($id)
+    {
+        $products = DB::table('product')->select('*');
+        $products = $products->get();
+        $orderline = OrderLine::findOrFail($id);
+        
+        // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi
+        return view('admin/order/orderline_edit', compact('orderline','products'));
+    }
+    
+    public function update(Request $request, $id){
+        // Tìm đến đối tượng muốn update
+        $orderlines = OrderLine::findOrFail($id);
+        
+        // gán dữ liệu gửi lên vào biến data
+        $data = $request->all();
+        
+        $orderlines->update($data);
+        return redirect('order');
     }
 }

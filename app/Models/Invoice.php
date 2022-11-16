@@ -21,6 +21,7 @@ class Invoice extends Model
     ];   
     public $timestamps = False;
     protected $defaults = array(
+        'total_payment'=>0,
         'state' => 'New',
     );
     

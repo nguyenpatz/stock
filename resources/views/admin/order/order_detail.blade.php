@@ -6,13 +6,14 @@
 @include('admin.main')
 
 <div class="container">
-	<div class="container row rounded border p-4">
+	<div class="container rounded border p-4">
+	<div class="container row">
 		<div class="col-2">
-			<button class="btn btn-info" style="width: 70px">Edit</button>
+			<a href="/order_edit/{{$orders->oid}}"><button class="btn btn-info" style="width: 70px">Edit</button></a>
 			<button class="btn btn-danger" style="width: 70px">Unlink</button>
 			<button class="btn btn-success mt-1" style="width: 70px">Done</button>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
-			<button class="btn btn-success mt-1" style="width: 140px">Create Invoice</button>
+			<a href="/create_invoice_from_order/{{$orders->oid}}"><button class="btn btn-success mt-1" style="width: 140px">Create Invoice</button></a>
 		</div>
 		<div class="col-4">
 			<ul>
@@ -25,17 +26,19 @@
 		<div class="col-4">
 			<ul>
                 <li>Received Date: {{ $orders->received_date }}</li>
-                <li>Duration Inventory: {{ $orders->duration_inventory }}</li>
                 <li>Employee: {{ $orders->epname }}</li>
-                <li>Payment Term: {{ $orders->payment_term }}</li>
 			</ul>
 		</div>
 		<div class="col-2 align-self-center">
 			<div class="bg-light rounded-circle d-flex justify-content-center py-3">{{$orders->state}}</div>
 		</div>
 	</div>
+	<div class="container">
+	 	<b>Payment Term:</b> {{ $orders->payment_term }}
+	</div>
+	</div>
 <div class="container mt-2">
-	<a href="oderlinenew/{{$orders->id}}">
+	<a href="/orderline_create/{{$orders->id}}">
 		<button class="btn btn-info">Add</button>
 	</a>
 	<table class="table table-bordered">
@@ -46,7 +49,7 @@
             <th>Amount</th>
             <th>Price</th>
             <th>Total</th>
-            <th>Action</th>
+            <th style="width:170px">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -58,7 +61,7 @@
             <td>{{$row->price}}</td>
             <td>Tong</td>
             <td>
-            	<a>Edit</a><a>Remove</a>
+            	<a href="/orderline_edit/{{$row->id}}><button class="btn">Edit</button></a><a><button class="btn">Remove</button></a>
             </td>
           </tr>
            @endforeach
