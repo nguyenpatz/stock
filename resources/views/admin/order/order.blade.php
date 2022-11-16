@@ -25,7 +25,7 @@
     <tbody>
     @foreach($order as $row)
       <tr>
-        <td><a href="/order/{{$row->id}}">{{ $row->odname}}</a></td>
+        <td><a href="/order/{{$row->oid}}">{{ $row->odname}}</a></td>
         <td>{{ $row->ptname }}</td>
         <td>{{ $row->create_date }}</td>
         <td>{{$row->expiration_date }}</td>

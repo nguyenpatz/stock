@@ -12,4 +12,8 @@ class InvoiceLineController extends Controller
             'title' => 'InvoiceLine'
         ]);
     }
+    public function create($id)
+    {
+        return view('admin.invoice.invoice_line', compact('id'));
+    }
 }

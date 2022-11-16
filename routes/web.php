@@ -29,7 +29,7 @@ Route::get('product', [
     'index'
 ]);
 
-Route::get('/admin/product/{id}', [
+Route::get('product/{id}', [
     ProductController::class,
     'show'
 ]);
@@ -52,6 +52,37 @@ Route::get('order', [
 Route::get('order/{id}', [
     OrderController::class,
     'show'
+]);
+
+Route::get('order/update/{id}', [
+    OrderController::class,
+    'update'
+]);
+
+Route::get('order/edit/{id}', [
+    OrderController::class,
+    'edit'
+]);
+
+Route::get('order/new/create', [
+    OrderController::class,
+    'create'
+]);
+
+
+Route::post('order/store', [
+    OrderController::class,
+    'store'
+]);
+
+Route::get('order/newline/new', [
+    OrderLineController::class,
+    'create'
+]);
+
+Route::post('order_line/store',[
+    OrderLineController::class,
+    'store'
 ]);
 
 Route::get('ipep', [

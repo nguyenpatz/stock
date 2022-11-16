@@ -35,7 +35,9 @@
 		</div>
 	</div>
 <div class="container mt-2">
-	<button class="btn btn-info">Add</button>
+	<a href="oderlinenew/{{$orders->id}}">
+		<button class="btn btn-info">Add</button>
+	</a>
 	<table class="table table-bordered">
         <thead>
          <tr class="bg-success">
