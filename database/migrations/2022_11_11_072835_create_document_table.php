@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('document', function (Blueprint $table) {
             $table->id();
-            $table->string('source');
-            $table->integer('state');
+            $table->string('source')->nullable();
+            $table->integer('state')->nullable();
         });
     }
 

@@ -17,17 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('template_id')->constrained('template');
             $table->text('name');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->text('state');
             $table->float('height');
             $table->float('length');
             $table->float('width');
-            $table->float('weight');
-            $table->text('color');
+            $table->float('weight')->nullable();
+            $table->text('color')->nullable();
             $table->double('price');
             $table->double('price_cost');
-            $table->date('date_manufacture');
-            $table->date('expiry_date');
         });
     }
 

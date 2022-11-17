@@ -3,33 +3,7 @@
 <head>
 @include('admin.head')
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-@include('admin.nav')
-@include('admin.sidebar')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Order</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Order</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
+@include('admin.main')
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -41,30 +15,24 @@
         <th>Create Date</th>
         <th>Expiration Date</th>
         <th>Received Date</th>
-        <th>Duration Inventory</th>
         <th>Employee</th>
         <th>Total Payment</th>
-        <th>Payment Term</th>
         <th>State</th>
-        <th>Action</th>
       </tr>
     </thead>
     <tbody>
+    @foreach($order as $row)
       <tr>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>#</td>
-        <td>
-	        <button class="btn btn-success">View</button>
-        </td>
+        <td><a href="/order/{{$row->oid}}">{{ $row->odname}}</a></td>
+        <td>{{ $row->ptname }}</td>
+        <td>{{ $row->create_date }}</td>
+        <td>{{$row->expiration_date }}</td>
+        <td>{{ $row->received_date }}</td>
+        <td>{{ $row->epname }}</td>
+        <td>{{ $row->total_payment }}</td>
+        <td>{{ $row->state }}</td>
       </tr>
+      @endforeach
     </tbody>
   </table>
         <!-- /.row (main row) -->

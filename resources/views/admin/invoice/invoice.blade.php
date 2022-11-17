@@ -16,13 +16,14 @@
         <th>Total Payment</th>
         <th>Sate</th>
         <th>Order</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
     @foreach($invoices as $row)
       <tr>
-        <td><a href="/admin/invoice/{{$row->id}}">{{ $row->name}}</a></td>
-        <td>{{ $row->partner_id }}</td>
+        <td><a href="/invoice/{{$row->ivid}}">{{ $row->ivname}}</a></td>
+        <td>{{ $row->ptname }}</td>
         <td>{{ $row->create_date }}</td>
         <td>{{$row->date_payment }}</td>
         <td>{{ $row->payment_term }}</td>
@@ -30,8 +31,9 @@
         <td>{{ $row->state }}</td>
         <td>{{ $row->order_id }}</td>
         <td>
-	        <button class="btn btn-success btn-sm">Unlink</button>
-	        <button class="btn btn-success btn-sm">Edit</button>
+        <a href="/invoice_delete/{{$row->ivid}}">
+        	<button class="btn">Unlink</button>
+        </a>
         </td>
       </tr>
       @endforeach

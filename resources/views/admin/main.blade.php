@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Product</h1>
+            <h1 class="m-0">{{$header}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Product</li>
+              <li class="breadcrumb-item active">{{$breadcrumb_item}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,8 +36,9 @@
       	</div>
       	
       	<div class="container-fluid row my-2 d-flex justify-content-between pl-0">
-      		<button class="btn btn-success">Create</button>
-      		
+      		<a href="/order_create">
+      			<button class="btn btn-success">Create</button>
+      		</a>
       		<div class="row">
 				<button class="btn btn-primary mx-1 btn-sm rounded-pill">Prev</button>
       			<div class="row mx-1">
