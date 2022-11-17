@@ -8,8 +8,8 @@
 <div class="container">
 	<div class="container row rounded border p-4">
 		<div class="col-2">
-			<a href="/invoice/edit/{{$invoices->id}}"><button class="btn btn-info" style="width: 70px">Edit</button></a>
-			<button class="btn btn-danger">Unlink</button>
+			<a href="/invoice/edit/{{$invoices->ivid}}"><button class="btn btn-info" style="width: 70px">Edit</button></a>
+			<a href="/invoice_delete/{{$invoices->ivid}}"><button class="btn btn-danger">Unlink</button></a>
 			<button class="btn btn-success mt-1" style="width: 70px">Done</button>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 		</div>
@@ -40,16 +40,20 @@
             <th>Amount</th>
             <th>Total Money</th>
             <th>Note</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
          @foreach($lines as $row)
           <tr>
-            <td>{{$row->name}}</td>
+            <td>{{$row->pname}}</td>
             <td>{{$row->unit_price}}</td>
             <td>{{$row->amount}}</td>
             <td>{{$row->total_money}}</td>
             <td>{{$row->note}}</td>
+            <td>
+            	<a href="/orderline_edit/{{$row->id}}><button class="btn">Edit</button></a><a href="/invoiceline_delete/{{$row->ivlid}}"><button class="btn">Remove</button></a>
+            </td>
           </tr>
            @endforeach
         </tbody>

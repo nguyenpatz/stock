@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 class InvoiceController extends Controller
 {
     public function index() {
-        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->select('*','partner.name as ptname','invoice.name as ivname');
+        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname');
         $invoices = $invoices->get();
         $header = 'Invoices';
         $breadcrumb_item = 'Invoices';
@@ -21,10 +21,10 @@ class InvoiceController extends Controller
     
     public function show($id)
     {
-        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->where('invoice.id','=', $id)->select('*','partner.name as ptname','invoice.name as ivname')->first();
-       // $invoices = DB::table('invoice')->where('id', '=', $id)->select('*')->first();
-        $lines = DB::table('invoice_line')->join('product', 'product.id', '=', 'invoice_line.product_id')
-        ->where('invoice_line.id','=',$id)->select('*');
+        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')
+        ->where('invoice.id','=', $id)
+        ->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname')->first();
+        $lines = DB::table('invoice_line')->join('product','product.id','=','invoice_line.product_id')->where('invoice_id','=',$id)->select('*','invoice_line.id as ivlid','product.name as pname');
         $lines = $lines->get();
         $header = 'Invoices';
         $breadcrumb_item = 'Invoices';
@@ -76,5 +76,13 @@ class InvoiceController extends Controller
         
         $invoices->delete();
         return redirect()->action('Admin\Invoice\InvoiceController@index')->with('success','Data removed.');
+    }
+
+    public function delete($id){
+        // Tìm đến đối tượng muốn xóa
+        $invoice = Invoice::findOrFail($id);
+        
+        $invoice->delete();
+        return redirect('invoice');
     }
 }

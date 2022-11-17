@@ -48,4 +48,11 @@ class OrderLineController extends Controller
         $orderlines->update($data);
         return redirect('order');
     }
+    public function delete($id){
+        // Tìm đến đối tượng muốn xóa
+        $OrderLine = OrderLine::findOrFail($id);
+        
+        $OrderLine->delete();
+        return redirect('order');
+    }
 }

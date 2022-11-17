@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Invoice;
+use App\Models\InvoiceLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -26,7 +27,7 @@ class OrderController extends Controller
         ->join('employee','employee.id','=','order.employee_id')
         ->where('order.id','=',$id)
         ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->first();
-        $lines = DB::table('order_line')->where('order_id','=',$id)->select('*');
+        $lines = DB::table('order_line')->join('product','product.id','=','order_line.product_id')->where('order_id','=',$id)->select('*','order_line.id as olid','product.name as pname');
         $lines = $lines->get();
         $header = 'Orders';
         $breadcrumb_item = 'Orders/OrderDetail';
@@ -72,16 +73,40 @@ class OrderController extends Controller
     }
     
     public function create_invoice($id){
-        DB::table('invoice')->insert([
-            'name'     => 'Invoice id',
-            'partner_id' => (int)DB::table('order')->where('id','=',$id)->select('partner_id'),
-            'create_date' => date('Y-m-d H:i:s'),
-            'date_payment' => '2022-11-17 20:06:0',
-            'payment_term' => 'ffff',
-            'total_payment'=>0,
-            'state'=>'ee',
-            'order_id'=> $id,
-        ]);
+        $order_line =DB::table('order_line')->where('order_id','=',$id)->select('*')->get();
+        $invoice = new Invoice;
+        $invoice -> name = 'Invoice id';
+        $invoice ->partner_id = DB::table('order')->where('id','=',$id)->select('partner_id')->value('partner_id');
+        $invoice->create_date = date('Y-m-d H:i:s');
+        $invoice->date_payment = '2022-11-17 20:06:0';
+        $invoice->payment_term = 'aa';
+        $invoice->order_id = $id;
+        $invoice->total_payment = 0;
+        $invoice->state='New';
+        $invoice->save();
+
+        foreach($order_line as $row){
+            $invoice_line = new InvoiceLine;
+            $invoice_line->product_id = $row->product_id;
+            $invoice_line->invoice_id = $invoice->id;
+            $invoice_line->total_money = 0;
+            $invoice_line->amount = $row->amount;
+            $invoice_line->unit_price = $row->price;
+            $invoice_line->note='a';
+            $invoice_line->save();
+        }
         return redirect('invoice');
+    }
+
+    public function delete($id){
+        // Tìm đến đối tượng muốn xóa
+        $order = Order::findOrFail($id);
+        $orderline = DB::table('order_line')->where('order_id','=',$id)->select('id');
+        $invoice = DB::table('invoice')->where('order_id','=',$id)->select('id');
+        $invoiceline = DB::table('invoice_line')->where('invoice_id','=',$invoice->value('id'))->select('id');
+        $invoiceline->delete();
+        $invoice->delete();
+        $orderline->delete();
+        return redirect('order');
     }
 }

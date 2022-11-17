@@ -180,6 +180,26 @@ Route::get('WarehouseInventory', [
     'index'
 ]);
 
+Route::get('/invoice_delete/{id}', [
+    InvoiceController::class,
+    'delete'
+]);
+
+Route::get('/invoiceline_delete/{id}', [
+    InvoiceLineController::class,
+    'delete'
+]);
+
+Route::get('/order_delete/{id}', [
+    OrderController::class,
+    'delete'
+]);
+
+Route::get('/orderline_delete/{id}', [
+    OrderLineController::class,
+    'delete'
+]);
+
 Route::post('admin/users/login/store', [
     LoginController::class,
     'store'
