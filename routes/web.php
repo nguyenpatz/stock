@@ -11,18 +11,37 @@ use App\Http\Controllers\Admin\Order\OrderLineController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\Invoice\InvoiceLineController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseController;
-use App\Http\Controllers\Admin\IP_EP\IpEpController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseInventoryController;
+
+// trả về view đăng nhập
 
 Route::get('login', [
     LoginController::class,
     'index'
-]);
+])->name('login');
 
-Route::get('dashboard', [
-    DashBoardController::class,
-    'index'
-]);
+
+
+/*
+khi click button login, phương thức post lấy dữ liệu email 
+và password của người dùng để LoginController check
+*/
+Route::post('post-login', [LoginController::class, 'postLogin'])->name('login.post');
+
+
+Route::get('registration', [
+    LoginController::class,
+    'register'
+])->name("register");
+
+Route::post('post-registration', [
+    LoginController::class,
+    'postRegistration'
+])->name("register.post");
+
+
+// đăng nhập thành công chạy về dashboard
+Route::get('dashboard', [LoginController::class, 'dashboard']);
 
 Route::get('product', [
     ProductController::class,
@@ -45,7 +64,7 @@ Route::get('category', [
 ]);
 
 Route::get('order', [
-   OrderController::class,
+    OrderController::class,
     'index'
 ]);
 
@@ -150,6 +169,11 @@ Route::get('invoice/update/{id}', [
     'update'
 ]);
 
+Route::get('invoice_done/{id}', [
+    InvoiceController::class,
+    'action_done'
+]);
+
 Route::get('invoice/unlink/{id}', [
     InvoiceController::class,
     'destroy'
@@ -195,6 +219,16 @@ Route::get('/order_delete/{id}', [
     'delete'
 ]);
 
+Route::get('/create_ipep/{id}', [
+    IpEpController::class,
+    'create'
+]);
+
+Route::post('/ipep/create', [
+    IpEpController::class,
+    'store'
+]);
+
 Route::get('/orderline_delete/{id}', [
     OrderLineController::class,
     'delete'
@@ -208,3 +242,5 @@ Route::post('admin/users/login/store', [
 Route::get('/', function () {
     return view('welcome');
 });
+    
+
