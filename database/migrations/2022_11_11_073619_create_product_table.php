@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('template_id')->constrained('template');
             $table->text('name');
             $table->text('note')->nullable();
-            $table->text('state');
+            $table->string('state');
             $table->float('height');
             $table->float('length');
             $table->float('width');

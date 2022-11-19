@@ -17,10 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // $fillable ở đây là các field not null phải truyền giá trị cho nó, nếu không thì sẽ gặp lỗi
     protected $fillable = [
         'name',
         'email',
         'password',
+        'perm',
     ];
 
     /**

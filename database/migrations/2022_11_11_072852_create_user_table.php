@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->string('password');
-            $table->tinyInteger('perm_read');
-            $table->tinyInteger('perm_write');
-            $table->tinyInteger('perm_create');
-            $table->tinyInteger('perm_unlink');
-        });
+        // Schema::create('user', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->text('name');
+        //     $table->string('password');
+        //     $table->tinyInteger('perm_read');
+        //     $table->tinyInteger('perm_write');
+        //     $table->tinyInteger('perm_create');
+        //     $table->tinyInteger('perm_unlink');
+        // });
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        // Schema::dropIfExists('user');
     }
 };
