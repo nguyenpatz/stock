@@ -4,25 +4,25 @@
     <ul class="navbar-nav">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="dashboard" class="nav-link">Home</a>
+        <a href="dashboard" class="nav-link">{{__('lang.home')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="partner" class="nav-link">Contact</a>
+        <a href="partner" class="nav-link">{{__('lang.contact')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/order" class="nav-link">Order</a>
+        <a href="/order" class="nav-link">{{__('lang.order')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="product" class="nav-link">Product</a>
+        <a href="/product" class="nav-link">{{__('lang.product')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/invoice" class="nav-link">Invoice</a>
+        <a href="/invoice" class="nav-link">{{__('lang.invoice')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="warehouse" class="nav-link">Warehouse</a>
+        <a href="/warehouse" class="nav-link">{{__('lang.warehouse')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="ipep" class="nav-link">Import/Export</a>
+        <a href="/ipep" class="nav-link">{{__('lang.ipep')}}</a>
       </li>
     </ul>
 
@@ -123,6 +123,29 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      @php $locale = session()->get('locale'); @endphp
+      <li class="nav-item dropdown">
+      	<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+       	data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        @switch($locale)
+            @case('en')
+            <img src="/images/flag/en.png" width="25px"> English
+            @break
+            @case('vi')
+            <img src="/images/flag/vi.png" width="20px"> VietNam
+            @break
+            @default
+            <img src="{{asset('images/flag/en.png')}}" width="25px"> English
+        @endswitch
+        	<span class="caret"></span>
+    	</a>
+    	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        	<a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="30px"> English</a>
+        	<a class="dropdown-item" href="lang/vi"><img src="{{asset('images/flag/vi.png')}}" width="25px"> VietNam</a>
+    	</div>
+	</li>
     </ul>
   </nav>
+  <div>
+  </div>
   <!-- /.navbar -->

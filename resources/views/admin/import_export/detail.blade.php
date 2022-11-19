@@ -10,7 +10,7 @@
 		<div class="col-2">
 			<button class="btn btn-info" style="width: 70px">Edit</button>
 			<button class="btn btn-danger">Unlink</button>
-			<button class="btn btn-success mt-1" style="width: 70px">Done</button>
+			<a href="/ipep_done/{{$ipeps->id}}"><button class="btn btn-success mt-1" style="width: 70px">Done</button></a>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 		</div>
 		<div class="col-4">

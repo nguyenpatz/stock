@@ -9,7 +9,9 @@ class WarehouseController extends Controller
 {
     public function index() {
         return view('admin.warehouse.warehouse', [
-            'title' => "Warehouse"
+            'title' => "Warehouse",
+            'header'=>'Warehouse',
+            'breadcrumb_item'=>'Warehouse'
         ]);
     }
 }

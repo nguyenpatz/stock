@@ -71,9 +71,10 @@ class LoginController extends Controller
         if(Auth::check()) {
             return view('admin.dashboard.index');
         }
-
+        return view('admin.dashboard.index');
+        
         //không thành công
-        return redirect('admin.users.login')->withSuccess('Bạn không thể truy cập vào đây!!!');
+        //return redirect('login')->withSuccess('Bạn không thể truy cập vào đây!!!');
 
     }
 

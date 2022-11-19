@@ -15,16 +15,16 @@
 		</div>
 		<div class="col-4">
 			<ul>
-                <li>Name: {{ $invoices->ivname }}</li>
-                <li>Partner: {{ $invoices->ptname }}</li>
-                <li>Create date: {{ $invoices->create_date }}</li>
-                <li>Date Payment: {{ $invoices->date_payment }}</li>
+                <li>{{__('lang.name')}}: {{ $invoices->ivname }}</li>
+                <li>{{__('lang.partner')}}: {{ $invoices->ptname }}</li>
+                <li>{{__('lang.createdate')}}: {{ $invoices->create_date }}</li>
+                <li>{{__('lang.date_payment')}}: {{ $invoices->date_payment }}</li>
 			</ul>
 		</div>
 		<div class="col-4">
 			<ul>
-                <li>Payment Term: {{ $invoices->payment_term }}</li>
-                <li>Order: {{ $invoices->order_id }}</li>
+                <li>{{__('lang.payment_term')}}: {{ $invoices->payment_term }}</li>
+                <li>{{__('lang.order')}}: {{ $invoices->order_id }}</li>
 			</ul>
 		</div>
 		<div class="col-2 align-self-center">
@@ -40,7 +40,6 @@
             <th>Amount</th>
             <th>Total Money</th>
             <th>Note</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -48,12 +47,9 @@
           <tr>
             <td>{{$row->pname}}</td>
             <td>{{$row->unit_price}}</td>
-            <td>{{$row->amount}}</td>
+            <td>{{$row->lamount}}</td>
             <td>{{$row->total_money}}</td>
             <td>{{$row->note}}</td>
-            <td>
-            	<a href="/orderline_edit/{{$row->id}}><button class="btn">Edit</button></a><a href="/invoiceline_delete/{{$row->ivlid}}"><button class="btn">Remove</button></a>
-            </td>
           </tr>
            @endforeach
         </tbody>

@@ -5,17 +5,21 @@
 </head>
 @include('admin.main')
         <!-- Small boxes (Stat box) -->
+<div class="d-flex justify-content-end">
+		{{ $invoices->links() }}
+</div>
+
 <table class="table table-bordered">
     <thead>
      <tr class="bg-success">
-        <th>Name</th>
-        <th>Partner</th>
-        <th>Create date</th>
-        <th>Date Payment</th>
-        <th>Payment Term</th>
-        <th>Total Payment</th>
-        <th>Sate</th>
-        <th>Order</th>
+        <th>{{__('lang.name')}}</th>
+        <th>{{__('lang.partner')}}</th>
+        <th>{{__('lang.createdate')}}</th>
+        <th>{{__('lang.date_payment')}}</th>
+        <th>{{__('lang.payment_term')}}</th>
+        <th>{{__('lang.total_payment')}}</th>
+        <th>{{__('lang.state')}}</th>
+        <th>{{__('lang.order')}}</th>
         <th>Action</th>
       </tr>
     </thead>

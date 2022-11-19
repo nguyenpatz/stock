@@ -12,11 +12,10 @@ use Illuminate\Support\Facades\Redirect;
 class InvoiceController extends Controller
 {
     public function index() {
-        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname');
-        $invoices = $invoices->get();
-        $header = 'Invoices';
-        $breadcrumb_item = 'Invoices';
-        return view('/admin/invoice/invoice', compact('invoices', 'header', 'breadcrumb_item'));
+        $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')
+        ->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname')->paginate(5);
+        $title = __('lang.invoice');
+        return view('/admin/invoice/invoice', compact('invoices', 'title'));
     }
     
     public function show($id)
@@ -24,11 +23,12 @@ class InvoiceController extends Controller
         $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')
         ->where('invoice.id','=', $id)
         ->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname')->first();
-        $lines = DB::table('invoice_line')->join('product','product.id','=','invoice_line.product_id')->where('invoice_id','=',$id)->select('*','invoice_line.id as ivlid','product.name as pname');
+        $lines = DB::table('invoice_line')->join('product','product.id','=','invoice_line.product_id')
+        ->where('invoice_id','=',$id)
+        ->select('*','invoice_line.id as ivlid','invoice_line.amount as lamount','product.name as pname');
         $lines = $lines->get();
-        $header = 'Invoices';
-        $breadcrumb_item = 'Invoices';
-        return view('/admin/invoice/invoice_detail', compact('invoices','lines','header','breadcrumb_item'));
+        $title = __('lang.invoice_detail');
+        return view('/admin/invoice/invoice_detail', compact('invoices','lines','title'));
     }
 
     public function create()
@@ -81,7 +81,8 @@ class InvoiceController extends Controller
     public function delete($id){
         // Tìm đến đối tượng muốn xóa
         $invoice = Invoice::findOrFail($id);
-        
+        $invoiceline = DB::table('invoice_line')->where('invoice_id','=',$id)->select('*');
+        $invoiceline->delete();
         $invoice->delete();
         return redirect('invoice');
     }

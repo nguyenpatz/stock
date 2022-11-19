@@ -4,20 +4,26 @@
 @include('admin.head')
 </head>
 @include('admin.main')
+      <a href="order_create">
+      			<button class="btn btn-success">Create</button>
+      </a>
+      <div class="d-flex justify-content-end">
+		{{ $order->links() }}
+  	  </div>
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
 		<table class="table table-bordered">
     		<thead>
       			<tr class="bg-success">
-        <th>Name</th>
-        <th>Partner</th>
-        <th>Create Date</th>
-        <th>Expiration Date</th>
-        <th>Received Date</th>
-        <th>Employee</th>
-        <th>Total Payment</th>
-        <th>State</th>
+        <th>{{__('lang.name')}}</th>
+        <th>{{__('lang.partner')}}</th>
+        <th>{{__('lang.createdate')}}</th>
+        <th>{{__('lang.edate')}}</th>
+        <th>{{__('lang.rdate')}}</th>
+        <th>{{__('lang.employee')}}</th>
+        <th>{{__('lang.total_payment')}}</th>
+        <th>{{__('lang.state')}}</th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +47,7 @@
     <!-- /.content -->
   </div>
 </div>
+
   <!-- /.content-wrapper -->
 @include('admin.footer')
 <script src="dist/js/pages/dashboard.js"></script>

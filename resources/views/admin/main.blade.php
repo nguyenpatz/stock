@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{$header}}</h1>
+            <h1 class="m-0">{{$title}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$breadcrumb_item}}</li>
+              <li class="breadcrumb-item active">{{$title}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,27 +25,12 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      		<form class="container-fluid d-flex justify-content-center">
+      		<form action="search" method="GET" class="container-fluid d-flex justify-content-center">
       			<div>
-          			<input class="form-control" placeholder="Input data ...">
+          			<input class="form-control" name="search" placeholder="{{__('lang.placeholder')}}">
       			</div>
       			<div>
-          			<button class="btn btn-success ml-2">Search</button>
+          			<button type="submit" class="btn btn-success ml-2">{{__('lang.search')}}</button>
       			</div>
       		</form>
-      	</div>
-      	
-      	<div class="container-fluid row my-2 d-flex justify-content-between pl-0">
-      		<a href="/order_create">
-      			<button class="btn btn-success">Create</button>
-      		</a>
-      		<div class="row">
-				<button class="btn btn-primary mx-1 btn-sm rounded-pill">Prev</button>
-      			<div class="row mx-1">
-					<input style="width: 50px; outline: none;" class="mr-1 rounded" type="number"/>
-					<input style="width: 50px; outline: none;" class="rounded" type="number"/>
-				</div>
-				<button class="btn btn-primary mr-1 btn-sm rounded-pill">Next</button>
-      		</div>
-      		</div>
       	</div>

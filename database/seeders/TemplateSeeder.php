@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TemplateSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class TemplateSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('template')->insert([
+            ['name' => 'Sale', 'warehouse_id' => 1],
+            ['name' => 'Sale 2', 'warehouse_id' => 2],
+        ]);
     }
 }

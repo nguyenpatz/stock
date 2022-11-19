@@ -11,7 +11,6 @@
  		<p>
         	<label for="title">Partner</label><br>
 			<select class="form-control" name="partner_id" aria-label="Default select example">
-				<option selected>Open this select menu</option>
 				@foreach($partners as $row)
 					<option value="{{$row->id}}">{{$row->name}}</option>
 				@endforeach
@@ -34,15 +33,14 @@
  		<p>
         	<label for="title">Employee</label><br>
 			<select class="form-control" name="employee_id" aria-label="Default select example">
-				<option selected>Open this select menu</option>
-				@foreach($employees as $row)
+				@foreach($employees as $row))
 					<option value="{{$row->id}}">{{$row->name}}</option>
 				@endforeach
 			</select>	
     	</p>
  		<p>
         	<label for="title">Payment term</label><br>
-        	<textarea rows="4" cols="50" class="form-control" name="payment_term" value="{{$order->payment_term}}"></textarea>
+        	<textarea rows="4" cols="50" class="form-control" name="payment_term">{{$order->payment_term}}</textarea>
     	</p>
     	<p>
         	<button type="submit" class="form-control btn btn-success">Submit</button>

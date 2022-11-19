@@ -11,8 +11,11 @@ use App\Http\Controllers\Admin\Order\OrderLineController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\Invoice\InvoiceLineController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseController;
+use App\Http\Controllers\Admin\IP_EP\IpEpController;
 use App\Http\Controllers\Admin\Warehouse\WarehouseInventoryController;
-
+use App\Http\Controllers\Admin\Repair\RepairController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\SearchController;
 // trả về view đăng nhập
 
 Route::get('login', [
@@ -64,8 +67,8 @@ Route::get('category', [
 ]);
 
 Route::get('order', [
-    OrderController::class,
-    'index'
+        OrderController::class,
+        'index'
 ]);
 
 Route::get('order/{id}', [
@@ -101,6 +104,17 @@ Route::get('order_create', [
 
 Route::post('order/store', [
     OrderController::class,
+    'store'
+]);
+
+Route::get('product_create', [
+    ProductController::class,
+    'create'
+]);
+
+
+Route::post('product/store', [
+    ProductController::class,
     'store'
 ]);
 
@@ -242,5 +256,24 @@ Route::post('admin/users/login/store', [
 Route::get('/', function () {
     return view('welcome');
 });
-    
+
+Route::get('order_done/{id}', [
+    IpEpController::class,
+    'action_done'
+]);
+
+Route::post('ipep/store', [
+    IpEpController::class,
+    'store'
+]);
+
+Route::get('/ipep_done/{id}', [
+    IpEpController::class,
+    'done'
+]);
+Route::get('lang/{locale}', [App\Http\Controllers\LanguageController::class, 'index']);
+
+Route::get('/search/', [
+    OrderController::class,
+    'search']);
 
