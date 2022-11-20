@@ -4,29 +4,33 @@
 @include('admin.head')
 </head>
 @include('admin.main')
-
+<a href="/product_create">
+      			<button class="btn btn-success">Create</button>
+</a>
 <div class="container">
 	<div class="container-fluid row">
-		<div class="col-6">
+		<div class="col-4">
 			<ul>
-				<li>Name: {{ $products->name }}</li>
-				<li>Templte: {{ $products->template_id }}</li>
-				<li>Price: {{ $products->price }}</li>
-				<li>Price Cost: {{ $products->price_cost }}</li>
-				<li>Date Manufacture: {{ $products->date_manufacture }}</li>
+				<li>{{__('lang.name')}}: {{ $products->tname }}</li>
+				<li>{{__('lang.price')}}: {{ $products->price }} <sup>đ</sup></li>
+				<li>{{__('lang.price_cost')}}: {{ $products->price_cost }} <sup>đ</sup></li>
+				<li>{{__('lang.amount')}}: {{ $products->amount }} </li>
 			</ul>
 		</div>
-		<div class="col-6">
+		<div class="col-4">
 			<ul>
-                <li>Expery: {{ $products->expery }}</li>
-                <li>State: {{ $products->state }}</li>
-                <li>Heigth: {{ $products->heigth }}</li>
-                <li>Width: {{ $products->width }}</li>
-                <li>Length: {{ $products->length }}</li>
-                <li>Weigth: {{ $products->weigth }}</li>
-                <li>Color: {{ $products->color }}</li>
-                <li>Action: </li>
+                <li>{{__('lang.state')}}: {{ $products->state }}</li>
+                <li>{{__('lang.height')}}: {{ $products->height }} <sup>m</sup></li>
+                <li>{{__('lang.width')}}: {{ $products->width }} <sup>m</sup></li>
+                <li>{{__('lang.length')}}: {{ $products->length }} <sup>m</sup></li>
+                <li>{{__('lang.weight')}}: {{ $products->weight }} <sup>kg</sup></li>
+                <li>{{__('lang.color')}}: {{ $products->color }}</li>
+                <li>{{__('lang.date_manufacture')}}: {{$template->date_manufacture}}</li>
+                <li>{{__('lang.date_expiry')}}: {{$template->expiry_date}}</li>
 			</ul>
+		</div>
+		<div class="col-2 align-self-center">
+			<div class="bg-light rounded-circle d-flex justify-content-center py-3">{{$products->state}}</div>
 		</div>
 	</div>
 	<div class="container-fluid">

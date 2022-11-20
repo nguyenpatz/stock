@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class WarehouseSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class WarehouseSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('warehouse')->insert([
+            ['name' => 'Điện thoại', 'type' => 'service'],
+            ['name' => 'Laptop', 'type' => 'consu'],
+        ]);
     }
 }

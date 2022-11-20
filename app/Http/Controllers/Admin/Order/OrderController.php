@@ -9,16 +9,17 @@ use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
     public function index() {
         $order = DB::table('order')->join('partner','partner.id','=','order.partner_id')
-        ->join('employee','employee.id','=','order.employee_id')->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname');
-        $order = $order->get();
-        $header = 'Orders';
-        $breadcrumb_item = 'Orders';
-        return view('/admin/order/order', compact('order','header','breadcrumb_item'));
+        ->join('employee','employee.id','=','order.employee_id')
+        ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->paginate(4);
+        $title = __('lang.orders');
+        $action = 'order_create';
+        return view('/admin/order/order', compact('order','title','action'));
     }
 
     public function show($id)
@@ -27,11 +28,12 @@ class OrderController extends Controller
         ->join('employee','employee.id','=','order.employee_id')
         ->where('order.id','=',$id)
         ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->first();
-        $lines = DB::table('order_line')->join('product','product.id','=','order_line.product_id')->where('order_id','=',$id)->select('*','order_line.id as olid','product.name as pname');
+        $lines = DB::table('order_line')->join('product','product.id','=','order_line.product_id')->where('order_id','=',$id)
+        ->select('*','order_line.id as olid','product.name as pname','order_line.amount as oamount','order_line.price as oprice');
         $lines = $lines->get();
-        $header = 'Orders';
-        $breadcrumb_item = 'Orders/OrderDetail';
-        return view('/admin/order/order_detail', compact('orders','lines','header','breadcrumb_item'));
+        $title = __('lang.orders');
+        $action = 'order_create';
+        return view('/admin/order/order_detail', compact('orders','lines','title','action'));
     }
     
     public function create()
@@ -69,33 +71,45 @@ class OrderController extends Controller
         $data = $request->all();
         
         $orders->update($data);
-        return redirect('order');
+        
+        return $this -> show($id);
+        //return redirect('order');
     }
     
     public function create_invoice($id){
         $order_line =DB::table('order_line')->where('order_id','=',$id)->select('*')->get();
         $invoice = new Invoice;
-        $invoice -> name = 'Invoice id';
-        $invoice ->partner_id = DB::table('order')->where('id','=',$id)->select('partner_id')->value('partner_id');
-        $invoice->create_date = date('Y-m-d H:i:s');
-        $invoice->date_payment = '2022-11-17 20:06:0';
-        $invoice->payment_term = 'aa';
-        $invoice->order_id = $id;
-        $invoice->total_payment = 0;
-        $invoice->state='New';
-        $invoice->save();
-
-        foreach($order_line as $row){
-            $invoice_line = new InvoiceLine;
-            $invoice_line->product_id = $row->product_id;
-            $invoice_line->invoice_id = $invoice->id;
-            $invoice_line->total_money = 0;
-            $invoice_line->amount = $row->amount;
-            $invoice_line->unit_price = $row->price;
-            $invoice_line->note='a';
-            $invoice_line->save();
+        $order = Order::findOrFail($id);
+        $title = 'Invoice';
+        $invoice1 = Invoice::where('order_id',$id)->get();
+        if ($invoice1->value('id') == null){
+            $invoice -> name = 'Invoice of '.$order->name;
+            $invoice ->partner_id = $order->partner_id;
+            $invoice->create_date = date('Y-m-d i:H:s');
+            $invoice->date_payment = '2022-11-17 20:06:0';
+            $invoice->payment_term = $order->payment_term;
+            $invoice->order_id = $id;
+            $invoice->total_payment = $order->total_payment * 0.05 + $order->total_payment;
+            $invoice->state= __('lang.state1');
+            $invoice->save();
+            
+            foreach($order_line as $row){
+                $invoice_line = new InvoiceLine;
+                $invoice_line->product_id = $row->product_id;
+                $invoice_line->invoice_id = $invoice->id;
+                $invoice_line->total_money = $row->amount*$row->price * 0.05 +$row->amount*$row->price;
+                $invoice_line->amount = $row->amount;
+                $invoice_line->unit_price = $row->price;
+                $invoice_line->note='a';
+                $invoice_line->save();
+            }
+            return app('App\Http\Controllers\Admin\Invoice\InvoiceController')->show($invoice->id);
         }
-        return redirect('invoice');
+        else{
+            echo'<script>alert("Order has been invoice")</script>';
+            return $this->show($id);
+            }
+
     }
 
     public function delete($id){
@@ -107,6 +121,23 @@ class OrderController extends Controller
         $invoiceline->delete();
         $invoice->delete();
         $orderline->delete();
+        $order->delete();
         return redirect('order');
+    }
+    public function search(Request $request){
+        $data = $request->all();
+        $search = $data['search'];
+        $order = DB::table('order')->join('partner','partner.id','=','order.partner_id')
+        ->join('employee','employee.id','=','order.employee_id')
+        ->where('order.name','like',"%${search}%")
+        ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->paginate(4);
+        $title = __('lang.orders');
+        $action = 'order_create';
+        if ($order->value('id') != null){
+            return view('/admin/order/order', compact('order','title','action'));}
+        else{
+            echo'<script>alert("Not found")</script>';
+            return $this->index();
+            }
     }
 }

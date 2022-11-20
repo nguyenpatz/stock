@@ -11,6 +11,7 @@
     		<thead>
       			<tr class="bg-success">
         <th>Name</th>
+        <th>Order</th>
         <th>Delivery Address</th>
         <th>Received Date</th>
         <th>Delivery Date</th>
@@ -22,6 +23,7 @@
     @foreach($ipep as $row)
       <tr>
         <td><a href="/ipep/{{$row->id}}">{{ $row->name}}</a></td>
+        <td><a>{{$row->order_id}}></a></td>
         <td>{{ $row->delivery_address }}</td>
         <td>{{ $row->received_date }}</td>
         <td>{{$row->delivery_date }}</td>

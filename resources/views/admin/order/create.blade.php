@@ -10,7 +10,6 @@
  		<p>
         	<label for="title">Partner</label><br>
 			<select class="form-control" name="partner_id" aria-label="Default select example">
-				<option selected>Open this select menu</option>
 				@foreach($partners as $row)
 					<option value="{{$row->id}}">{{$row->name}}</option>
 				@endforeach
@@ -33,16 +32,15 @@
  		<p>
         	<label for="title">Employee</label><br>
 			<select class="form-control" name="employee_id" aria-label="Default select example">
-				<option selected>Open this select menu</option>
 				@foreach($employees as $row)
 					<option value="{{$row->id}}">{{$row->name}}</option>
 				@endforeach
 			</select>	
-    	</p>
- 		<p>
+    	</p> 		<p>
         	<label for="title">Payment term</label><br>
         	<input type="text" class="form-control" name="payment_term" value="">
     	</p>
+
     	<p>
         	<button type="submit" class="form-control btn btn-success">Submit</button>
     	</p>

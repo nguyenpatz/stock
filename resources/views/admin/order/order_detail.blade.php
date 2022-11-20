@@ -4,29 +4,31 @@
 @include('admin.head')
 </head>
 @include('admin.main')
-
+<a href="order_create">
+      			<button class="btn btn-success">Create</button>
+</a>
 <div class="container">
 	<div class="container rounded border p-4">
 	<div class="container row">
 		<div class="col-2">
 			<a href="/order_edit/{{$orders->oid}}"><button class="btn btn-info" style="width: 70px">Edit</button></a>
 			<a href="/order_delete/{{$orders->oid}}"><button class="btn btn-danger" style="width: 70px">Unlink</button></a>
-			<button class="btn btn-success mt-1" style="width: 70px">Done</button>
+			<a href="/order_done/{{$orders->oid}}"><button class="btn btn-success mt-1" style="width: 70px">Done</button></a>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 			<a href="/create_invoice_from_order/{{$orders->oid}}"><button class="btn btn-success mt-1" style="width: 140px">Create Invoice</button></a>
 		</div>
 		<div class="col-4">
 			<ul>
-                <li>Name: {{ $orders->odname }}</li>
-                <li>Partner: {{ $orders->ptname }}</li>
-                <li>Create date: {{ $orders->create_date }}</li>
-                <li>Expiration Date: {{ $orders->expiration_date }}</li>
+                <li>{{__('lang.name')}}: {{ $orders->odname }}</li>
+                <li>{{__('lang.partner')}}: {{ $orders->ptname }}</li>
+                <li>{{__('lang.createdate')}}: {{ $orders->create_date }}</li>
+                <li>{{__('lang.edate')}}: {{ $orders->expiration_date }}</li>
 			</ul>
 		</div>
 		<div class="col-4">
 			<ul>
-                <li>Received Date: {{ $orders->received_date }}</li>
-                <li>Employee: {{ $orders->epname }}</li>
+                <li>{{__('lang.rdate')}}: {{ $orders->received_date }}</li>
+                <li>{{__('lang.employee')}}: {{ $orders->epname }}</li>
 			</ul>
 		</div>
 		<div class="col-2 align-self-center">
@@ -34,11 +36,11 @@
 		</div>
 	</div>
 	<div class="container">
-	 	<b>Payment Term:</b> {{ $orders->payment_term }}
+	 	<b>{{__('lang.payment_term')}}:</b> {{ $orders->payment_term }}
 	</div>
 	</div>
 <div class="container mt-2">
-	<a href="/orderline_create/{{$orders->id}}">
+	<a href="/orderline_create/{{$orders->oid}}">
 		<button class="btn btn-info">Add</button>
 	</a>
 	<table class="table table-bordered">
@@ -48,7 +50,6 @@
             <th>Product</th>
             <th>Amount</th>
             <th>Price</th>
-            <th>Total</th>
             <th style="width:170px">Action</th>
           </tr>
         </thead>
@@ -57,9 +58,8 @@
           <tr>
             <td>{{$row->create_date}}</td>
             <td>{{$row->pname}}</td>
-            <td>{{$row->amount}}</td>
-            <td>{{$row->price}}</td>
-            <td>Tong</td>
+            <td>{{$row->oamount}}</td>
+            <td>{{$row->oprice}}</td>
             <td>
             	<a href="/orderline_edit/{{$row->id}}><button class="btn">Edit</button></a><a href="/orderline_delete/{{$row->olid}}"><button class="btn">Remove</button></a>
             </td>

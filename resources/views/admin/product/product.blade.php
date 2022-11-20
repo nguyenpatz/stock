@@ -4,44 +4,41 @@
 @include('admin.head')
 </head>
 @include('admin.main')
+      <a href="product_create">
+      			<button class="btn btn-success">Create</button>
+      </a>
+      <div class="container d-flex align-self-center">
+		{{ $products->links() }}
+  	  </div>
         <!-- Small boxes (Stat box) -->
 		<table class="table table-bordered">
     		<thead>
       			<tr class="bg-success">
-        <th>Name</th>
-        <th>Template</th>
-        <th>Price</th>
-        <th>Price Cost</th>
-        <th>Date Manufacture</th>
-        <th>Expery</th>
-        <th>State</th>
-        <th>Heigth</th>
-        <th>Width</th>
-        <th>Length</th>
-        <th>Weight</th>
-        <th>Color</th>
-        <th>Action</th>
+        <th>{{__('lang.name')}}</th>
+        <th>{{__('lang.amount')}}</th>
+        <th>{{__('lang.price')}}</th>
+        <th>{{__('lang.price_cost')}}</th>
+        <th>{{__('lang.state')}}</th>
+        <th>{{__('lang.height')}}</th>
+        <th>{{__('lang.width')}}</th>
+        <th>{{__('lang.length')}}</th>
+        <th>{{__('lang.weight')}}</th>
+        <th>{{__('lang.color')}}</th>
       </tr>
     </thead>
     <tbody>
-	@foreach($news as $row)
+	@foreach($products as $row)
       <tr>
-        <td><a href="/admin/product/{{$row->id}}">{{$row->name}}</a></td>
-        <td>{{$row->template_id}}</td>
-        <td>{{$row->price}}</td>
-        <td>{{$row->price_cost}}</td>
-        <td>{{$row->data_manufacture}}</td>
-        <td>{{$row->expery}}</td>
+        <td><a href="/product/{{$row->pid}}">{{$row->tname}}</a></td>
+        <td>{{$row->amount}}</td>
+        <td>{{$row->price}} <sup>đ</sup></td>
+        <td>{{$row->price_cost}} <sup>đ</sup></td>
         <td>{{$row->state}}</td>
-        <td>{{$row->height}}</td>
-        <td>{{$row->width}}</td>
-        <td>{{$row->length}}</td>
-        <td>{{$row->weight}}</td>
+        <td>{{$row->height}} <sup>m</sup></td>
+        <td>{{$row->width}} <sup>m</sup></td>
+        <td>{{$row->length}} <sup>m</sup></td>
+        <td>{{$row->weight}} <sup>kg</sup></td>
         <td>{{$row->color}}</td>
-        <td>
-	        <button class="btn btn-success btn-sm">View</button>
-	        <button class="btn btn-success btn-sm">Edit</button>
-        </td>
       </tr>
     @endforeach
     </tbody>

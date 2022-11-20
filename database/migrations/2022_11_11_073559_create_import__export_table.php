@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->dateTime('received_date');
                 $table->dateTime('delivery_date');
                 $table->foreignId('partner_id')->constrained('partner');
+                $table->foreignId('order_id')->constrained('order');
                 $table->text('status');
             });
         } else {
