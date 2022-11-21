@@ -4,16 +4,19 @@
 @include('admin.head')
 </head>
 @include('admin.main')
+<a href="/partner_create">
+  <button class="btn btn-success">{{__('lang.create')}}</button>
+</a>
         <!-- Small boxes (Stat box) -->
 <table class="table table-bordered">
     <thead>
      <tr class="bg-success">
-        <th>Name</th>
-        <th>Bank</th>
-        <th>Address</th>
-        <th>Phone</th>
+        <th>{{__('lang.name')}}</th>
+        <th>{{__('lang.bank')}}</th>
+        <th>{{__('lang.address')}}</th>
+        <th>{{__('lang.phone')}}</th>
         <th>Email</th>
-        <th>Old</th>
+        <th>{{__('lang.old')}}</th>
       </tr>
     </thead>
     <tbody>
