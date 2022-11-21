@@ -19,9 +19,6 @@
 			</div>
 			</p>
 			<div>
-				<label for="title">Amount</label><br> <input type="number"
-					class="form-control" name="amount" value="">
-				</p>
 				<p>
 					<label for="title">Price</label><br> <input type="number"
 						class="form-control" name="price" value="">

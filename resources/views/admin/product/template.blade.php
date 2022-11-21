@@ -16,6 +16,7 @@
 			<th>Amount</th>
 			<th>Date Manufacture</th>
 			<th>Expiry Date</th>
+			<th>State</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,6 +27,7 @@
 			<td>{{ $row->amount}}</td>
 			<td>{{ $row->date_manufacture}}</td>
 			<td>{{$row->expiry_date }}</td>
+			<td>{{$row->state}}</td>
 		</tr>
 		@endforeach
 	</tbody>

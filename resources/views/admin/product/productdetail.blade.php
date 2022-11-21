@@ -13,7 +13,6 @@
 				<li>{{__('lang.name')}}: {{ $products->tname }}</li>
 				<li>{{__('lang.price')}}: {{ $products->price }} <sup>đ</sup></li>
 				<li>{{__('lang.price_cost')}}: {{ $products->price_cost }} <sup>đ</sup></li>
-				<li>{{__('lang.amount')}}: {{ $products->amount }}</li>
 			</ul>
 		</div>
 		<div class="col-4">

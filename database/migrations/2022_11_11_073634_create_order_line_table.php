@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->id();
                 $table->foreignId('order_id')->constrained('order');
                 $table->dateTime('create_date');
-                $table->foreignId('product_id')->constrained('product');
+                $table->foreignId('product_id')->constrained('template');
                 $table->integer('amount');
                 $table->double('price');
             });

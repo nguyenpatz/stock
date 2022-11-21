@@ -13,7 +13,6 @@
 	<thead>
 		<tr class="bg-success">
 			<th>{{__('lang.name')}}</th>
-			<th>{{__('lang.amount')}}</th>
 			<th>{{__('lang.price')}}</th>
 			<th>{{__('lang.price_cost')}}</th>
 			<th>{{__('lang.state')}}</th>
@@ -28,7 +27,6 @@
 		@foreach($products as $row)
 		<tr>
 			<td><a href="/product/{{$row->pid}}">{{$row->tname}}</a></td>
-			<td>{{$row->amount}}</td>
 			<td>{{$row->price}} <sup>đ</sup></td>
 			<td>{{$row->price_cost}} <sup>đ</sup></td>
 			<td>{{$row->state}}</td>

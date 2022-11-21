@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index() {
         $products = DB::table('product')
         ->join('template','template.id','product.template_id')
-        ->where('state','Stored')->select('*', 'product.id as pid', 'template.name as tname')->paginate(5);
+        ->where('product.state','Stored')->select('*', 'product.id as pid', 'template.name as tname')->paginate(5);
         $title = __('lang.product');
         $action = 'product_create';
         return view('/admin/product/product', compact('products', 'title','action'));

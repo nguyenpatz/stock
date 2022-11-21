@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\IpEp;
 use App\Models\Product;
+use App\Models\Template;
 
 class IpEpController extends Controller
 {
@@ -105,7 +106,6 @@ class IpEpController extends Controller
         foreach($order_line->get() as $row){
             $product = Product::findOrFail($row->product_id);
             $product->state='Stored';
-            $product->amount = $product->amount+$row->amount;
             $product->save();
         }
         $ipep->status = 'Done';

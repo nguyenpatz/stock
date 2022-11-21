@@ -23,9 +23,9 @@ class InvoiceController extends Controller
         $invoices = DB::table('invoice')->join('partner','partner.id','=','invoice.partner_id')
         ->where('invoice.id','=', $id)
         ->select('*','invoice.id as ivid','partner.name as ptname','invoice.name as ivname')->first();
-        $lines = DB::table('invoice_line')->join('product','product.id','=','invoice_line.product_id')
+        $lines = DB::table('invoice_line')->join('template','template.id','=','invoice_line.product_id')
         ->where('invoice_id','=',$id)
-        ->select('*','invoice_line.id as ivlid','invoice_line.amount as lamount','product.name as pname');
+        ->select('*','invoice_line.id as ivlid','invoice_line.amount as lamount','template.name as pname');
         $lines = $lines->get();
         $title = __('lang.invoice_detail');
         return view('/admin/invoice/invoice_detail', compact('invoices','lines','title'));
