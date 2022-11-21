@@ -42,7 +42,7 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['state']= __('lang.state1');
+        $data['state']= 'New';
         $data['amount']=0;
         $template = Template::create($data);
         return $this->show($template->id);

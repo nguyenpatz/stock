@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->date('date_manufacture');
                 $table->date('expiry_date');
                 $table->text('note')->nullable();
+                $table->string('state');
             });
     }
 

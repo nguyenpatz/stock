@@ -17,7 +17,7 @@ return new class extends Migration
 
             Schema::create('invoice_line', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('product_id')->constrained('product');
+                $table->foreignId('product_id')->constrained('template');
                 $table->foreignId('invoice_id')->constrained('invoice');
                 $table->double('total_money');
                 $table->integer('amount');

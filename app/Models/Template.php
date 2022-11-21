@@ -15,10 +15,12 @@ class Template extends Model
         'date_manufacture',
         'expiry_date',
         'note',
+        'state'
     ];
     public $timestamps = False;
     protected $defaults = array(
         'amount' => 0,
+        'state' => 'New'
     );
     
     public function __construct(array $attributes = array())

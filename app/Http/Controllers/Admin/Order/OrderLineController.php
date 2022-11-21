@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Orderline;
 use App\Models\Order;
 use App\Http\Controllers\Admin\IP_EP\IpEpController;
+use App\Models\Template;
 
 class OrderLineController extends Controller
 {
@@ -16,7 +17,7 @@ class OrderLineController extends Controller
     }
     public function create($id)
     {
-        $products = DB::table('product')->select('*',);
+        $products = DB::table('template')->where('state','New')->select('*',);
         $products = $products->get();
         $title = 'Order Line Create';
         return view('admin.order.order_line', compact('products','id','title'));
@@ -25,6 +26,8 @@ class OrderLineController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $product = Template::findOrFail($data['product_id']);
+        $data['amount'] = $product->amount;
         Orderline::create($data);
         $order = Order::findOrFail($data['order_id']);
         $id = $order->id;
@@ -34,7 +37,7 @@ class OrderLineController extends Controller
 
     public function edit($id)
     {
-        $products = DB::table('product')->select('*');
+        $products = DB::table('template')->where('state','New')->select('*');
         $products = $products->get();
         $orderline = OrderLine::findOrFail($id);
         // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi

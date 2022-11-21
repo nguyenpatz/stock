@@ -13,6 +13,7 @@
 			<ul>
 				<li>Name: {{ $template->name }}</li>
 				<li>Category: {{$category->name}}</li>
+				<li>State: {{$template->state}}</li>
 			</ul>
 		</div>
 		<div class="col-4">
