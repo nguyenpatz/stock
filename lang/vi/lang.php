@@ -42,6 +42,13 @@ return [
     
     'date_payment'=>'Ngày thanh toán',
     'date_manufacture'=>'Ngày sản xuất',
-    'date_expiry'=>'Ngày hết hạn (nếu có)'
+    'date_expiry'=>'Ngày hết hạn (nếu có)',
+    
+    'phone' => 'Số điện thoại',
+    'bank' => 'Ngân hàng',
+    'address' => 'Địa chỉ',
+    'create' => 'Tạo mới',
+    'note' => 'Ghi chú',
+    'submit' => 'Xác nhận',
 ];
 ?>

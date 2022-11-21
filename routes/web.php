@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\Warehouse\WarehouseInventoryController;
 use App\Http\Controllers\Admin\Repair\RepairController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Admin\Partner\PartnerController;
+
 // trả về view đăng nhập
 
 Route::get('login', [
@@ -222,6 +224,20 @@ Route::get('employee', [
     EmployeeController::class,
     'index'
 ]);
+Route::get('partner', [
+    PartnerController::class,
+    'index'
+]);
+
+Route::get('partner_create', [
+    PartnerController::class,
+    'create'
+])->name('partner.create');
+
+Route::post('partner/create', [
+    PartnerController::class,
+    'store'
+])->name('partner.store');
 
 Route::get('warehouse', [
     WarehouseController::class,

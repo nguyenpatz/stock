@@ -42,6 +42,14 @@ return [
     
     'date_payment'=>'Date Payment',
     'date_manufacture'=>'Date Manufacture',
-    'date_expiry'=>'Date Expiry'
+    'date_expiry'=>'Date Expiry',
+    
+    'bank' => 'Bank',
+    'address' => 'Address',
+    'create' => 'Create',
+    'note' => 'Note',
+    'submit' => 'Submit',
+    'phone' => 'Phone',
+    'old' => 'Old',
 ];
 ?>
