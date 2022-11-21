@@ -15,13 +15,13 @@ class OrderLineController extends Controller
         return view('admin.order.order_line');
     }
     public function create($id)
-    {   
+    {
         $products = DB::table('product')->select('*',);
         $products = $products->get();
         $title = 'Order Line Create';
         return view('admin.order.order_line', compact('products','id','title'));
     }
-    
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -37,18 +37,17 @@ class OrderLineController extends Controller
         $products = DB::table('product')->select('*');
         $products = $products->get();
         $orderline = OrderLine::findOrFail($id);
-        
         // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi
         return view('admin/order/orderline_edit', compact('orderline','products'));
     }
-    
+
     public function update(Request $request, $id){
         // Tìm đến đối tượng muốn update
         $orderlines = OrderLine::findOrFail($id);
-        
+
         // gán dữ liệu gửi lên vào biến data
         $data = $request->all();
-        
+
         $orderlines->update($data);
         return app('App\Http\Controllers\Admin\Order\OrderController')->show($orderlines->order_id);;
     }

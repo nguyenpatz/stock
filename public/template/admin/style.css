@@ -1,0 +1,15 @@
+.col-4>ul>li{
+    background: #0001; padding: 10px; border-radius:20px; list-style:none;
+    //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+.state{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #FFB896;
+    color: white;
+    border-radius: 50%;
+}
+.btn{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

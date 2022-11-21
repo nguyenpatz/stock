@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Template;
 
 class ProductController extends Controller
 {
@@ -28,22 +29,21 @@ class ProductController extends Controller
         return view('/admin/product/productdetail', compact('products', 'template','title','action'));
     }
     
-    public function create()
+    public function create($id)
     {
-        $products = DB::table('product')->select('*');
-        $products = $products->get();
-        $templates = DB::table('template')->select('*');
-        $templates = $templates->get();
         $title = 'Create Product';
-        return view('/admin/product/product_create', compact('products','templates','title'));
+        return view('/admin/product/product_create', compact('title','id'));
     }
     
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['state']= __('lang.state1');
-        $data['amount']=0;
+        $data['state']= 'New';
+        $template = Template::findOrFail($data['template_id']);
+        $data['name']= $template->name;
         $product = Product::create($data);
-        return $this->show($product->id);
+        $template->amount = $template->amount+1;
+        $template->save();
+        return app('App\Http\Controllers\Admin\Product\TemplateController')->show($product->template_id);
     }
 }

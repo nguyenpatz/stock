@@ -19,12 +19,11 @@ return new class extends Migration
             $table->text('name');
             $table->text('note')->nullable();
             $table->string('state');
-            $table->integer('amount');
             $table->float('height');
             $table->float('length');
             $table->float('width');
             $table->float('weight')->nullable();
-            $table->text('color')->nullable();
+            $table->string('color')->nullable();
             $table->double('price');
             $table->double('price_cost');
         });

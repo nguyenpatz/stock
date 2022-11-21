@@ -4,16 +4,16 @@
     <ul class="navbar-nav">
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="dashboard" class="nav-link">{{__('lang.home')}}</a>
+        <a href="/" class="nav-link">{{__('lang.home')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="partner" class="nav-link">{{__('lang.contact')}}</a>
+        <a href="/partner" class="nav-link">{{__('lang.contact')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/order" class="nav-link">{{__('lang.order')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/product" class="nav-link">{{__('lang.product')}}</a>
+        <a href="/template_view" class="nav-link">{{__('lang.product')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/invoice" class="nav-link">{{__('lang.invoice')}}</a>

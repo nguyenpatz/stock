@@ -23,7 +23,7 @@ class Order extends Model
     public $timestamps = False;
     protected $defaults = array(
         'total_payment' => 0,
-        'state' => 'new'
+        'state' => 'New'
     );
     
     public function __construct(array $attributes = array())

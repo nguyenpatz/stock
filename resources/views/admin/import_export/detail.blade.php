@@ -5,12 +5,11 @@
 </head>
 @include('admin.main')
 
-<div class="container">
+<div class="container mt-3">
 	<div class="container row rounded border p-4">
 		<div class="col-2">
-			<button class="btn btn-info" style="width: 70px">Edit</button>
-			<button class="btn btn-danger">Unlink</button>
-			<a href="/ipep_done/{{$ipeps->id}}"><button class="btn btn-success mt-1" style="width: 70px">Done</button></a>
+			<button class="btn btn-danger">Unlink</button></br>
+			<a href="/ipep_done/{{$ipeps->id}}"><button class="btn btn-success mt-1" style="width: 70px">Done</button></a></br>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 		</div>
 		<div class="col-4">
