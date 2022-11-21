@@ -5,26 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Template extends Model
 {
-    protected $table = 'product';
+    protected $table = 'template';
     protected $fillable = [
         'name',
         'amount',
-        'template_id',
+        'category_id',
+        'date_manufacture',
+        'expiry_date',
         'note',
-        'state',
-        'height',
-        'length',
-        'width',
-        'weight',
-        'color',
-        'price',
-        'price_cost'
     ];
     public $timestamps = False;
     protected $defaults = array(
-        'state' => 'New',
+        'amount' => 0,
     );
     
     public function __construct(array $attributes = array())

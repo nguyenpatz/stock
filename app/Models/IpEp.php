@@ -18,4 +18,13 @@ class IpEp extends Model
         'status',
     ];
     public $timestamps = False;
+    protected $defaults = array(
+        'status' => 'New',
+    );
+    
+    public function __construct(array $attributes = array())
+    {
+        $this->setRawAttributes($this->defaults, true);
+        parent::__construct($attributes);
+    }
 }

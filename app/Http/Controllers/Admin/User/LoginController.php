@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
 use Hash;
-
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -71,7 +71,11 @@ class LoginController extends Controller
         if(Auth::check()) {
             return view('admin.dashboard.index');
         }
-        return view('admin.dashboard.index');
+        $title = 'DashBoard';
+        $order = COUNT(DB::table('order')->where('state','New')->get());
+        $product = COUNT(DB::table('product')->where('state','Stored')->get());
+        $ipep = COUNT(DB::table('import__export')->where('status','New')->get());
+        return view('admin.dashboard.index', compact('title','order','product','ipep'));
         
         //không thành công
         //return redirect('login')->withSuccess('Bạn không thể truy cập vào đây!!!');

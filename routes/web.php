@@ -26,7 +26,7 @@ Route::get('login', [
 
 
 /*
-khi click button login, phương thức post lấy dữ liệu email 
+khi click button login, phương thức post lấy dữ liệu email
 và password của người dùng để LoginController check
 */
 Route::post('post-login', [LoginController::class, 'postLogin'])->name('login.post');
@@ -44,7 +44,7 @@ Route::post('post-registration', [
 
 
 // đăng nhập thành công chạy về dashboard
-Route::get('dashboard', [LoginController::class, 'dashboard']);
+Route::get('/', [LoginController::class, 'dashboard']);
 
 Route::get('product', [
     ProductController::class,
@@ -56,9 +56,24 @@ Route::get('product/{id}', [
     'show'
 ]);
 
-Route::get('template', [
+Route::get('template_view', [
     TemplateController::class,
     'index'
+]);
+
+Route::get('template/{id}', [
+    TemplateController::class,
+    'show'
+]);
+
+Route::get('template_create', [
+    TemplateController::class,
+    'create'
+]);
+
+Route::post('template/store', [
+    TemplateController::class,
+    'store'
 ]);
 
 Route::get('category', [
@@ -107,7 +122,7 @@ Route::post('order/store', [
     'store'
 ]);
 
-Route::get('product_create', [
+Route::get('product_create/{id}', [
     ProductController::class,
     'create'
 ]);
@@ -253,9 +268,6 @@ Route::post('admin/users/login/store', [
     'store'
 ]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('order_done/{id}', [
     IpEpController::class,

@@ -5,7 +5,7 @@
 </head>
 @include('admin.main')
     <section class="content">
-      <div class="container-fluid">
+      <div class="container-fluid mt-3">
         <!-- Small boxes (Stat box) -->
 		<table class="table table-bordered">
     		<thead>

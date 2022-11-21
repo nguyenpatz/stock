@@ -108,14 +108,14 @@ class IpEpController extends Controller
             $product->amount = $product->amount+$row->amount;
             $product->save();
         }
-        $ipep->status = __('lang.state5');
+        $ipep->status = 'Done';
         $ipep->save();
-        $order->state = __('lang.state5');
+        $order->state = 'Done';
         $order->save();
         return redirect('ipep');
     }
     public function action_done($id){
-        Order::findOrFail($id)->update(['state'=> __('lang.state4')]);
+        Order::findOrFail($id)->update(['state'=>'Created IP/EP']);
         $ipep = IpEp::where('order_id',$id)->select('id')->get();
         $title = 'Ipep create';
         if ($ipep->value('id') == null){

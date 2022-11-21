@@ -42,13 +42,17 @@ class OrderController extends Controller
         $partners = $partners->get();
         $employees = DB::table('employee')->select('*');
         $employees = $employees->get();
-        return view('/admin/order/create', compact('partners','employees'));
+        $title='Order Create';
+        return view('/admin/order/create', compact('partners','employees','title'));
     }
     
     public function store(Request $request)
     {
         $data = $request->all();
-        Order::create($data);
+        $data['name']='Oder';
+        $data['create_date']=date('Y-m-d');
+        $order = Order::create($data);
+        $order->update(['name'=>'Order'.$order->id]);
         return redirect('order');
     }
     
@@ -59,8 +63,9 @@ class OrderController extends Controller
         $employees = DB::table('employee')->select('*');
         $employees = $employees->get();
         $order = Order::findOrFail($id);
+        $title = 'Order edit';
         
-        return view('admin/order/edit', compact('order','partners','employees'));
+        return view('admin/order/edit', compact('order','partners','employees','title'));
     }
     
     public function update(Request $request, $id){
@@ -85,12 +90,12 @@ class OrderController extends Controller
         if ($invoice1->value('id') == null){
             $invoice -> name = 'Invoice of '.$order->name;
             $invoice ->partner_id = $order->partner_id;
-            $invoice->create_date = date('Y-m-d i:H:s');
+            $invoice->create_date = date('Y-m-d');
             $invoice->date_payment = '2022-11-17 20:06:0';
             $invoice->payment_term = $order->payment_term;
             $invoice->order_id = $id;
             $invoice->total_payment = $order->total_payment * 0.05 + $order->total_payment;
-            $invoice->state= __('lang.state1');
+            $invoice->state= 'New';
             $invoice->save();
             
             foreach($order_line as $row){
