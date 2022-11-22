@@ -5,21 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Partner extends Model
+class Bank_account extends Model
 {
     use HasFactory;
-    
-    protected $table = 'partner';
+    protected $table = 'bank_account';
     protected $fillable = [
-        'bank_id',
         'name',
-        'address',
-        'phone',
-        'email',
-        'note',
-        'birthday',
+        'number_account',
     ];
 
     public $timestamps = false;
-
 }

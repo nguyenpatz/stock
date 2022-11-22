@@ -15,7 +15,7 @@
 				@foreach($banks as $row)
 					<option value="{{$row}}">{{$row}}</option>
 				@endforeach
-			</select>
+			</select>	
     	</p>
 		<p>
         	<label for="title">{{__('lang.account_number')}}</label><br>
