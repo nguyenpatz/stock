@@ -55,4 +55,18 @@ class ProductController extends Controller
         $template->save();
         return app('App\Http\Controllers\Admin\Product\TemplateController')->show($id);
     }
+    public function edit($id){
+        $product = Product::findOrFail($id);
+        $template = DB::table('template')->select('*');
+        $template = $template->get();
+        $title = 'EDIT';
+        return view('/admin/product/product_edit', compact('template','title','id','product'));
+    }
+    
+    public function update(Request $request, $id){
+        $data = $request->all();
+        $product = Product::findOrFail($id);
+        $product->update($data);
+        return $this->show($id);
+    }
 }

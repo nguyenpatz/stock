@@ -7,7 +7,10 @@
 <div class="container mt-5">
 	<div class="container-fluid row">
 		<div class="col-4">
-			
+			<a href="/template_edit/{{$template->id}}">
+				<button class="btn btn-info" style="width: 70px">Edit</button></a>
+			<a href="/template_delete/{{$template->id}}">
+				<button class="btn btn-danger" style="width: 70px">Unlink</button></a>
 		</div>
 		<div class="col-4">
 			<ul>
@@ -55,7 +58,9 @@
 					<td><input type="color" value="{{$row->color}}" class="color"></td>
 					<td>{{ $row->price}}</td>
 					<td>{{ $row->state}}</td>
-					<td><a href="/product/{{$row->pid}}">Remove</a></td>
+					<td><a href="/product/{{$row->pid}}">Remove</a>
+						<a href="/product_edit/{{$row->pid}}">Edit</a>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
