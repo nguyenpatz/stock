@@ -109,6 +109,26 @@ Route::post('orderline_update/{id}', [
     'update'
 ]);
 
+Route::get('template_edit/{id}', [
+    TemplateController::class,
+    'edit'
+]);
+
+Route::post('template_update/{id}', [
+    TemplateController::class,
+    'update'
+]);
+
+Route::get('product_edit/{id}', [
+    ProductController::class,
+    'edit'
+]);
+
+Route::post('product_update/{id}', [
+    ProductController::class,
+    'update'
+]);
+
 Route::get('orderline_edit/{id}', [
     OrderLineController::class,
     'edit'
@@ -317,5 +337,10 @@ Route::get('/portal', [
 
 Route::get('/product/{id}', [
     ProductController::class,
+    'delete'
+]);
+
+Route::get('/template_delete/{id}', [
+    TemplateController::class,
     'delete'
 ]);

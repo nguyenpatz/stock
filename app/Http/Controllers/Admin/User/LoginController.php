@@ -69,16 +69,15 @@ class LoginController extends Controller
     public function dashboard() {
         // kiểm tra thành công chạy vào dashboard bằng route
         if(Auth::check()) {
-            return view('admin.dashboard.index');
+            $title = 'DashBoard';
+            $order = COUNT(DB::table('order')->where('state','New')->get());
+            $product = COUNT(DB::table('product')->where('state','Stored')->get());
+            $ipep = COUNT(DB::table('import__export')->where('status','New')->get());
+            return view('admin.dashboard.index', compact('title','order','product','ipep'));
         }
-        $title = 'DashBoard';
-        $order = COUNT(DB::table('order')->where('state','New')->get());
-        $product = COUNT(DB::table('product')->where('state','Stored')->get());
-        $ipep = COUNT(DB::table('import__export')->where('status','New')->get());
-        return view('admin.dashboard.index', compact('title','order','product','ipep'));
         
         //không thành công
-        //return redirect('login')->withSuccess('Bạn không thể truy cập vào đây!!!');
+        return redirect('login')->withSuccess('Bạn không thể truy cập vào đây!!!');
 
     }
 

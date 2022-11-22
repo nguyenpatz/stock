@@ -48,6 +48,28 @@ class TemplateController extends Controller
         return $this->show($template->id);
     }
     
+    public function edit($id){
+        $template = Template::findOrFail($id);
+        $category = DB::table('product_category')->select('*');
+        $category = $category->get();
+        $title = 'EDIT';
+        return view('/admin/product/template_edit', compact('template','title','id','category'));
+    }
+
+    public function update(Request $request, $id){
+        $data = $request->all();
+        $template = Template::findOrFail($id);
+        $template->update($data);
+        return $this->show($id);
+    }
+
     public function search(Request $request){
+    }
+    public function delete($id){
+        $template = Template::findOrFail($id);
+        $product = Product::where('template_id',$id);
+        $product->delete();
+        $template->delete();
+        return $this->index();
     }
 }
