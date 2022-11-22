@@ -42,8 +42,17 @@ class ProductController extends Controller
         $template = Template::findOrFail($data['template_id']);
         $data['name']= $template->name;
         $product = Product::create($data);
-        $template->amount = $template->amount+1;
+        $template->amount = Product::where('template_id',$product->template_id)->count();
         $template->save();
         return app('App\Http\Controllers\Admin\Product\TemplateController')->show($product->template_id);
+    }
+    
+    public function delete($id){
+        $product = Product::findOrFail($id);
+        $template = Template::findOrFail($product->template_id);
+        $product->delete();
+        $template->amount = Product::where('template_id',$id)->count();
+        $template->save();
+        return app('App\Http\Controllers\Admin\Product\TemplateController')->show($id);
     }
 }

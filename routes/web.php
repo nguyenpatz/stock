@@ -156,6 +156,10 @@ Route::get('ipep/{id}', [
     'show'
 ]);
 
+Route::get('ipep_delete/{id}', [
+    IpEpController::class,
+    'delete'
+]);
 Route::get('invoice', [
     InvoiceController::class,
     'index'
@@ -309,4 +313,9 @@ Route::get('/search/', [
 Route::get('/portal', [
     PortalController::class,
     'index'
+]);
+
+Route::get('/product/{id}', [
+    ProductController::class,
+    'delete'
 ]);

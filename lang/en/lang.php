@@ -61,5 +61,7 @@ return [
     'old' => 'Old',
     'account_number' => 'Account number',
     'birthday' => 'Birthday',
+    
+    'category'=>'Category',
 ];
 ?>
