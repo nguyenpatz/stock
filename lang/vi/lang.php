@@ -52,5 +52,7 @@ return [
     'submit' => 'Xác nhận',
     'account_number' => 'Số tài khoản',
     'birthday' => 'Ngày sinh',
+    
+    'category'=>'Danh mục'
 ];
 ?>

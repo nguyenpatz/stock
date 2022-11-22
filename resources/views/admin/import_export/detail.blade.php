@@ -8,7 +8,7 @@
 <div class="container mt-3">
 	<div class="container row rounded border p-4">
 		<div class="col-2">
-			<button class="btn btn-danger">Unlink</button></br>
+			<a href="/ipep_delete/{{$ipeps->id}}"><button class="btn btn-danger">Unlink</button></a></br>
 			<a href="/ipep_done/{{$ipeps->id}}"><button class="btn btn-success mt-1" style="width: 70px">Done</button></a></br>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 		</div>
@@ -23,6 +23,7 @@
 		<div class="col-4">
 			<ul>
                 <li>Payment Term: {{ $ipeps->partner_id }}</li>
+                <li><a href="/order/{{$ipeps->order_id}}">Order: {{ $ipeps->order_id}}</a></li>
 			</ul>
 		</div>
 		<div class="col-2 align-self-center">

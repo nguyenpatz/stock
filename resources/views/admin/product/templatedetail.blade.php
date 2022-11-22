@@ -55,7 +55,7 @@
 					<td>{{ $row->color}}</td>
 					<td>{{ $row->price}}</td>
 					<td>{{ $row->state}}</td>
-					<td><a>Edit</a><a>Remove</a></td>
+					<td><a href="/product/{{$row->pid}}">Remove</a></td>
 				</tr>
 				@endforeach
 			</tbody>

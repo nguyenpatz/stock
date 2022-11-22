@@ -95,16 +95,19 @@ class IpEpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        // Tìm đến đối tượng muốn xóa
+        $ipep = IpEp::findOrFail($id);
+        $ipep->delete();
+        return redirect('ipep');
     }
     public function done($id){
-        $ipep = Ipep::findOrFail($id);
+        $ipep = IpEp::findOrFail($id);
         $order = Order::findOrFail($ipep->order_id);
         $order_line = DB::table('order_line')->where('order_id','=',$order->id)->select('*');
         foreach($order_line->get() as $row){
-            $product = Product::findOrFail($row->product_id);
+            $product = Template::findOrFail($row->product_id);
             $product->state='Stored';
             $product->save();
         }

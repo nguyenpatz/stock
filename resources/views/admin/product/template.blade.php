@@ -11,12 +11,12 @@
 <table class="table table-bordered">
 	<thead>
 		<tr class="bg-success">
-			<th>Name</th>
-			<th>Category</th>
-			<th>Amount</th>
-			<th>Date Manufacture</th>
-			<th>Expiry Date</th>
-			<th>State</th>
+			<th>{{__('lang.name')}}</th>
+			<th>{{__('lang.category')}}</th>
+			<th>{{__('lang.amount')}}</th>
+			<th>{{__('lang.date_manufacture')}}</th>
+			<th>{{__('lang.date_expiry')}}</th>
+			<th>{{__('lang.state')}}</th>
 		</tr>
 	</thead>
 	<tbody>
