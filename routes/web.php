@@ -250,7 +250,7 @@ Route::get('warehouse', [
 ]);
 
 Route::get('WarehouseInventory', [
-    WarehouseInventory::class,
+    WarehouseInventoryController::class,
     'index'
 ]);
 

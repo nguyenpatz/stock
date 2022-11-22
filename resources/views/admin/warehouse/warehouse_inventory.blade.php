@@ -20,7 +20,7 @@
     <tbody>
     @foreach($wis as $row)
       <tr>
-        <td><a href="/invoice/{{$row->id}}">{{ $row->pdname}}</a></td>
+        <td>{{ $row->pdname}}</td>
         <td>{{ $row->epname }}</td>
         <td>{{ $row->actual_number }}</td>
         <td>{{$row->quantity_checked }}</td>

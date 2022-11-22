@@ -28,3 +28,5 @@
   <!-- summernote -->
   <link rel="stylesheet" href="/template/admin/plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="/template/admin/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/js/bootstrap-colorpicker.min.js"></script>  

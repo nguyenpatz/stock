@@ -26,9 +26,10 @@
 			</div>
 			</p>
 			<p>
-				<label for="title">Color</label><br> <input type="text"
-					class="form-control" name="color" value="">
+				<label for="exampleColorInput" class="form-label">Color</label>
+				<input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="" title="Choose your color">
 			</p>
+			
 		</div>
 		<div class="col-6">
 			<p>

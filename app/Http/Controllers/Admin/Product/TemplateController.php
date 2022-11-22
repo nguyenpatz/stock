@@ -47,4 +47,7 @@ class TemplateController extends Controller
         $template = Template::create($data);
         return $this->show($template->id);
     }
+    
+    public function search(Request $request){
+    }
 }
