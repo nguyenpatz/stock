@@ -16,14 +16,14 @@
         <th>{{__('lang.address')}}</th>
         <th>{{__('lang.phone')}}</th>
         <th>Email</th>
-        <th>{{__('lang.old')}}</th>
+        <th>{{__('lang.birthday')}}</th>
       </tr>
     </thead>
     <tbody>
     @foreach($partners as $row)
       <tr>
-        <td><a href="/invoice/{{$row->id}}">{{ $row->name}}</a></td>
-        <td>{{ $row->bank_id }}</td>
+        <td><a href="/invoice/{{$row->id}}">{{ $row->ptname}}</a></td>
+        <td>{{ $row->bn }}</td>
         <td>{{ $row->address }}</td>
         <td>{{$row->phone }}</td>
         <td>{{ $row->email }}</td>
