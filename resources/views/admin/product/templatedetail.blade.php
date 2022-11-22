@@ -52,7 +52,7 @@
 					<td>{{ $row->width }}</td>
 					<td>{{ $row->length }}</td>
 					<td>{{ $row->weight}}</td>
-					<td>{{ $row->color}}</td>
+					<td><input type="color" value="{{$row->color}}" class="color"></td>
 					<td>{{ $row->price}}</td>
 					<td>{{ $row->state}}</td>
 					<td><a href="/product/{{$row->pid}}">Remove</a></td>
