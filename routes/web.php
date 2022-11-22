@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Repair\RepairController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\Partner\PartnerController;
+use App\Http\Controllers\Portal\PortalController;
 
 // trả về view đăng nhập
 
@@ -305,3 +306,7 @@ Route::get('/search/', [
     OrderController::class,
     'search']);
 
+Route::get('/portal', [
+    PortalController::class,
+    'index'
+]);
