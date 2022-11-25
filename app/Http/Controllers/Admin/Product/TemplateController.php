@@ -45,9 +45,10 @@ class TemplateController extends Controller
         $data['state']= 'New';
         $data['amount']=0;
         $template = Template::create($data);
-        return $this->show($template->id);
+        return redirect('template/'.$template->id.'');
+
     }
-    
+
     public function edit($id){
         $template = Template::findOrFail($id);
         $category = DB::table('product_category')->select('*');

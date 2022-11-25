@@ -30,7 +30,7 @@
 			Note: {{$template->note}}
 		</div>
 	</div>
-	
+
 	<div class="container-fluid mt-3">
 		<a href="/product_create/{{$template->id}}">
 			<button class="btn btn-success">ADD</button>
@@ -58,7 +58,7 @@
 					<td><input type="color" value="{{$row->color}}" class="color"></td>
 					<td>{{ $row->price}}</td>
 					<td>{{ $row->state}}</td>
-					<td><a href="/product/{{$row->pid}}">Remove</a>
+					<td><a href="/product_delete/{{$row->pid}}">Remove</a>
 						<a href="/product_edit/{{$row->pid}}">Edit</a>
 					</td>
 				</tr>
