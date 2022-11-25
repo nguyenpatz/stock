@@ -63,5 +63,11 @@ return [
     'birthday' => 'Birthday',
     
     'category'=>'Category',
+    'actual_number' => 'Actual number',
+    'quantity_checked' => 'Quantity checked',
+    'deviant' => 'Deviant',
+    'date' => 'Date',
+    'create_date' => 'Create date',
+    'type' => 'Type',
 ];
 ?>

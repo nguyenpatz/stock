@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->integer('amount');
                 $table->foreignId('category_id')->constrained('product_category');
                 $table->date('date_manufacture');
-                $table->date('expiry_date');
+                $table->date('expiry_date')->nullable();
                 $table->text('note')->nullable();
                 $table->string('state');
             });

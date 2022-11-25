@@ -16,6 +16,7 @@
 				<label for="title">{{__('lang.name')}}</label><br> 
 				<input type="text" class="form-control" name="name" value="">
 			</p>
+			
 		</div>
 		<div class="col-6">
 			<p>

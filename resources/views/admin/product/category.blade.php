@@ -3,31 +3,24 @@
 <head>@include('admin.head')
 </head>
 @include('admin.main')
+<a href="/category_create">
+	<button class="btn btn-success">
+		{{__('lang.create')}}
+	</button>
+</a>
 <!-- Small boxes (Stat box) -->
 <table class="table table-bordered">
 	<thead>
 		<tr class="bg-success">
-			<th>Name</th>
-			<th>Partner</th>
-			<th>Create date</th>
-			<th>Date Payment</th>
-			<th>Payment Term</th>
-			<th>Total Payment</th>
-			<th>Sate</th>
-			<th>Order</th>
+			<th>{{__('lang.name')}}</th>
+			<th>{{__('lang.warehouse')}}</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($invoices as $row)
+		@foreach ($categories as $category)
 		<tr>
-			<td><a href="/invoice/{{$row->id}}">{{ $row->ivname}}</a></td>
-			<td>{{ $row->ptname }}</td>
-			<td>{{ $row->create_date }}</td>
-			<td>{{$row->date_payment }}</td>
-			<td>{{ $row->payment_term }}</td>
-			<td>{{ $row->total_payment }}</td>
-			<td>{{ $row->state }}</td>
-			<td>{{ $row->order_id }}</td>
+			<th>{{$category->name}}</th>
+			<th>{{$category->wname}}</th>
 		</tr>
 		@endforeach
 	</tbody>

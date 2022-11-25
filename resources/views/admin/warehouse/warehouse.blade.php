@@ -8,8 +8,8 @@
 <table class="table table-bordered">
     <thead>
      <tr class="bg-success">
-        <th>Name</th>
-        <th>Type</th>
+        <th>{{__('lang.name')}}</th>
+        <th>{{__('lang.type')}}</th>
       </tr>
     </thead>
     <tbody>
