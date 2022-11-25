@@ -69,5 +69,6 @@ return [
     'date' => 'Date',
     'create_date' => 'Create date',
     'type' => 'Type',
+    'history' => 'History',
 ];
 ?>
