@@ -60,5 +60,6 @@ return [
     'date' => 'Ngày',
     'create_date' => 'Ngày tạo',
     'type' => 'Kiểu',
+    'history' => 'Lịch sử',
 ];
 ?>
