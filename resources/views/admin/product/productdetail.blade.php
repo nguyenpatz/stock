@@ -32,7 +32,9 @@
 				class="bg-light rounded-circle d-flex justify-content-center py-3">{{$products->state}}</div>
 		</div>
 	</div>
-	<div class="container-fluid"></div>
+	<div class="container">
+        Note: </br>{{ $products->note}}
+	</div>
 </div>
 </div>
 </section>

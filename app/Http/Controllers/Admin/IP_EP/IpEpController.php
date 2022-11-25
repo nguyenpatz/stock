@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\IpEp;
 use App\Models\Product;
 use App\Models\Template;
+use App\Models\Orderline;
 
 class IpEpController extends Controller
 {
@@ -45,14 +46,26 @@ class IpEpController extends Controller
     {
         $data = $request->all();
         $order = Order::findOrFail($data['order_id']);
-//        $orderline = DB::table('order_line')->where('order_id','=',$order->id)->select('id');
+        $orderline = Orderline::where('order_id','=',$order->id)->select('*');
+        $orderline = $orderline->get();
+        $array = array();
+        foreach($orderline as $row){
+            array_push($array, Template::findOrFail($row->product_id));
+        }
+        $array2= array();
+        foreach($array as $item){
+            $product = Product::where('template_id',$item->id)->select('*');
+            $product = $product->get();
+            foreach($product as $p){
+                array_push($array2, $p);
+            }
+        }
         $data['name']='IPEP'.$order->id;
         $data['partner_id'] = $order->partner_id;
         $data['status'] = 'New';
         $ipep = IpEp::create($data);
         return $this->show($ipep->id);
     }
-
     /**
      * Display the specified resource.
      *
@@ -63,7 +76,22 @@ class IpEpController extends Controller
     {
         $ipeps = DB::table('import__export')->where('id', '=', $id)->select('*')->first();
         $title = 'Import/Export Detail';
-        return view('/admin/import_export/detail', compact('ipeps','title'));
+        $order = Order::findOrFail($ipeps->order_id);
+        $orderline = Orderline::where('order_id','=',$order->id)->select('*');
+        $orderline = $orderline->get();
+        $array = array();
+        foreach($orderline as $row){
+            array_push($array, Template::findOrFail($row->product_id));
+        }
+        $array2= array();
+        foreach($array as $item){
+            $product = Product::where('template_id',$item->id)->select('*');
+            $product = $product->get();
+            foreach($product as $p){
+                array_push($array2, $p);
+            }
+        }
+        return view('/admin/import_export/detail', compact('ipeps','title','array2'));
     }
 
     /**
@@ -102,7 +130,8 @@ class IpEpController extends Controller
         $ipep->delete();
         return redirect('ipep');
     }
-    public function done($id){
+    public function done(Request $request, $id){
+        dd($request->all());
         $ipep = IpEp::findOrFail($id);
         $order = Order::findOrFail($ipep->order_id);
         $order_line = DB::table('order_line')->where('order_id','=',$order->id)->select('*');
@@ -127,5 +156,22 @@ class IpEpController extends Controller
              echo'<script>alert("Order has been shipped")</script>';
              return app('App\Http\Controllers\Admin\Order\OrderController')->show($id);
             }
+    }
+
+    public function fail($id){
+        $product = Product::findOrFail($id);
+        if ($product->state == 'Fail'){
+            echo'<script>alert("Order has been shipped")</script>';
+        }
+        $title = 'Reason';
+        return view('/admin/import_export/ipepcheck', compact('id','title'));
+    }
+    public function fail_save(Request $request, $id){
+        $data = $request->all();
+        $product = Product::findOrFail($id);
+        $product->note = $data['note'];
+        $product->state = 'Fail';
+        $product->save();
+        return redirect('template_view');
     }
 }

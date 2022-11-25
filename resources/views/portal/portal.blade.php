@@ -160,25 +160,39 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="bg-primary py-5 px-4 px-sm-5">
-                        <form class="py-5">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;">
-                                    <option selected>Select A Service</option>
-                                    <option value="1">Service 1</option>
-                                    <option value="2">Service 1</option>
-                                    <option value="3">Service 1</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Get A Quote</button>
-                            </div>
-                        </form>
+                            <form method="post" action="{{route('partner.store')}}" class="py-5">
+                             <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+                             <div class="row">
+                             	<div class="col-6">
+                             		<p>
+                                    	<label for="title">{{__('lang.name')}}</label><br>
+                                    	<input type="text" class="form-control" name="name" value="">
+                                	</p>
+                             		<p>
+                                    	<label for="title">{{__('lang.address')}}</label><br>
+                                    	<input type="text" class="form-control" name="address" value="">
+                                	</p>
+                             		<p>
+                                    	<label for="title">{{__('lang.phone')}}</label><br>
+                            			<!-- oninput regex để lấy mỗi giá trị là số, không phải số  thì không hiển thị ra input-->
+                                    	<input type="text" class="form-control" name="phone" value="" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                	</p>
+                             		<p>
+                                    	<label for="title">Email</label><br>
+                                    	<input type="email" class="form-control" name="email" value="">
+                                	</p>
+                             	</div>
+                             	<div class="col-6">
+                             		<p>
+                                    	<label for="title">{{__('lang.birthday')}}</label><br>
+                                    	<input type="date" class="form-control" name="birthday" value="" min="0">
+                                	</p>
+                                	<p>
+                                    	<button type="submit" class="form-control btn btn-success">{{__('lang.submit')}}</button>
+                                	</p>
+                             	</div>
+                             </div>
+				       </form>
                     </div>
                 </div>
             </div>
