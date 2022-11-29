@@ -11,21 +11,19 @@ class Order extends Model
     protected $fillable = [
         'name',
         'partner_id',
-        'order_id',
         'create_date',
         'expiration_date',
         'received_date',
         'employee_id',
-        'total_payment',
+        'pricelist_id',
         'payment_term',
         'state',
     ];
     public $timestamps = False;
     protected $defaults = array(
-        'total_payment' => 0,
         'state' => 'New'
     );
-    
+
     public function __construct(array $attributes = array())
     {
         $this->setRawAttributes($this->defaults, true);

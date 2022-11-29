@@ -18,14 +18,16 @@ return new class extends Migration
             $table->foreignId('template_id')->constrained('template');
             $table->text('name');
             $table->text('note')->nullable();
-            $table->string('state');
             $table->float('height');
             $table->float('length');
             $table->float('width');
+            $table->float('volume');
+            $table->date('import_date')->nullable();
+            $table->date('export_date')->nullable();
             $table->float('weight')->nullable();
             $table->string('color')->nullable();
             $table->double('price');
-            $table->double('price_cost');
+            $table->string('state');
         });
     }
 

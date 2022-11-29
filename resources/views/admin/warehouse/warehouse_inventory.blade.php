@@ -8,13 +8,13 @@
 <table class="table table-bordered">
     <thead>
      <tr class="bg-success">
-        <th>Product</th>
-        <th>Employee</th>
-        <th>Actual number</th>
-        <th>Quantity checked</th>
-        <th>Date</th>
-        <th>Deviant</th>
-        <th>State</th>
+        <th>{{__('lang.product')}}</th>
+        <th>{{__('lang.employee')}}</th>
+        <th>{{__('lang.actual_number')}}</th>
+        <th>{{__('lang.quantity_checked')}}</th>
+        <th>{{__('lang.date')}}</th>
+        <th>{{__('lang.deviant')}}</th>
+        <th>{{__('lang.state')}}</th>
       </tr>
     </thead>
     <tbody>

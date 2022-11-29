@@ -28,14 +28,14 @@ class OrderController extends Controller
         ->join('employee','employee.id','=','order.employee_id')
         ->where('order.id','=',$id)
         ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->first();
-        $lines = DB::table('order_line')->join('template','template.id','=','order_line.product_id')->where('order_id','=',$id)
-        ->select('*','order_line.id as olid','template.name as pname','order_line.amount as oamount','order_line.price as oprice');
+        $lines = DB::table('order_line')->join('template','template.id','=','order_line.template_id')->where('order_id','=',$id)
+        ->select('*','order_line.id as olid','template.name as pname','order_line.amount as oamount','order_line.volume as ovulume');
         $lines = $lines->get();
         $title = __('lang.orders');
         $action = 'order_create';
         return view('/admin/order/order_detail', compact('orders','lines','title','action'));
     }
-    
+
     public function create()
     {
         $partners = DB::table('partner')->select('*');
@@ -45,7 +45,7 @@ class OrderController extends Controller
         $title='Order Create';
         return view('/admin/order/create', compact('partners','employees','title'));
     }
-    
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -55,7 +55,7 @@ class OrderController extends Controller
         $order->update(['name'=>'Order'.$order->id]);
         return redirect('order');
     }
-    
+
     public function edit($id)
     {
         $partners = DB::table('partner')->select('*');
@@ -64,23 +64,23 @@ class OrderController extends Controller
         $employees = $employees->get();
         $order = Order::findOrFail($id);
         $title = 'Order edit';
-        
+
         return view('admin/order/edit', compact('order','partners','employees','title'));
     }
-    
+
     public function update(Request $request, $id){
         // Tìm đến đối tượng muốn update
         $orders = Order::findOrFail($id);
-        
+
         // gán dữ liệu gửi lên vào biến data
         $data = $request->all();
-        
+
         $orders->update($data);
-        
+
         return $this -> show($id);
         //return redirect('order');
     }
-    
+
     public function create_invoice($id){
         $order_line =DB::table('order_line')->where('order_id','=',$id)->select('*')->get();
         $invoice = new Invoice;
@@ -97,7 +97,7 @@ class OrderController extends Controller
             $invoice->total_payment = $order->total_payment * 0.05 + $order->total_payment;
             $invoice->state= 'New';
             $invoice->save();
-            
+
             foreach($order_line as $row){
                 $invoice_line = new InvoiceLine;
                 $invoice_line->product_id = $row->product_id;

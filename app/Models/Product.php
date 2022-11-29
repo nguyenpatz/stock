@@ -20,13 +20,15 @@ class Product extends Model
         'weight',
         'color',
         'price',
-        'price_cost'
+        'volume',
+        'import_date',
+        'export_date'
     ];
     public $timestamps = False;
     protected $defaults = array(
         'state' => 'New',
     );
-    
+
     public function __construct(array $attributes = array())
     {
         $this->setRawAttributes($this->defaults, true);

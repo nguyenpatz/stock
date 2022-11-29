@@ -17,31 +17,32 @@ class OrderLineController extends Controller
     }
     public function create($id)
     {
-        $products = DB::table('template')->where('state','New')->select('*',);
-        $products = $products->get();
+        $templates = DB::table('template')->where('state','New')->select('*');
+        $templates = $templates->get();
         $title = 'Order Line Create';
-        return view('admin.order.order_line', compact('products','id','title'));
+        return view('admin.order.order_line', compact('templates','id','title'));
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        $product = Template::findOrFail($data['product_id']);
-        $data['amount'] = $product->amount;
+        $template = Template::findOrFail($data['template_id']);
+        // amount của orderline bằng
+        $data['amount'] = $template->amount;
+        $data['volume']  = $template->volume;
         Orderline::create($data);
         $order = Order::findOrFail($data['order_id']);
         $id = $order->id;
-        $order ->update(['total_payment'=> $order->total_payment+ $data['price']*$data['amount']]);
-        return app('App\Http\Controllers\Admin\Order\OrderController')->show($id);
+        return redirect('/order/'.$id.'');
     }
 
     public function edit($id)
     {
-        $products = DB::table('template')->where('state','New')->select('*');
-        $products = $products->get();
+        //lọc ra các template nào đang có trang thái là new để gắn cho order line
+        $templates = Template::where('state','New');
         $orderline = OrderLine::findOrFail($id);
         // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi
-        return view('admin/order/orderline_edit', compact('orderline','products'));
+        return view('admin/order/orderline_edit', compact('orderline','templates'));
     }
 
     public function update(Request $request, $id){
@@ -52,24 +53,17 @@ class OrderLineController extends Controller
         $data = $request->all();
 
         $orderlines->update($data);
-        return app('App\Http\Controllers\Admin\Order\OrderController')->show($orderlines->order_id);;
+        // quay trở lại trang chi tiết order chưa order line vừa sửa
+        return redirect('/order/'.$orderline->order_id.'');
     }
     public function delete($id){
         // Tìm đến đối tượng muốn xóa
         $OrderLine = OrderLine::findOrFail($id);
         $order = Order::findOrFail($OrderLine->order_id);
-        $ipep = DB::table('import__export')->where('order_id',$order->id)->select('*');
-        $price = $OrderLine->price;
-        $amount = $OrderLine->amount;
+        $ipep = IpEp::where('order_id',$order->id);
+
         $ipep->delete();
         $OrderLine->delete();
-        $order->update(['total_payment'=>$order->total_payment- ($price*$amount)]);
-        $lines = DB::table('order_line')->where('order_id',$order->id)->select('*');
-        $lines = $lines->get();
-        if ($order->total_payment < 0 || $lines->value('id')==null){
-            $order->total_payment =0;
-            $order->save();
-        }
-        return app('App\Http\Controllers\Admin\Order\OrderController')->show($order->id);
+        return redirect('/order/'.$order->id.'');
     }
 }

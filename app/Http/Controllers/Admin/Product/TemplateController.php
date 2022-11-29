@@ -39,7 +39,7 @@ class TemplateController extends Controller
         return view('/admin/product/template_create', compact('title','category'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $data = $request->all();
         $data['state']= 'New';

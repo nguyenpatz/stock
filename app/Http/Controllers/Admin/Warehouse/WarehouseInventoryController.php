@@ -16,7 +16,7 @@ class WarehouseInventoryController extends Controller
         //     ->select('warehouse_inventory.*', 'product.name as pdname', 'employee.name as epname');
 
         $wis = DB::table('warehouse_inventory')
-            ->join('product', 'product.id','=' ,'warehouse_inventory.product_id')
+            ->join('template', 'template.id','=' ,'warehouse_inventory.template_id')
             ->join('employee', 'employee.id', '=' , 'warehouse_inventory.employee_id')
             ->select('warehouse_inventory.*');
         

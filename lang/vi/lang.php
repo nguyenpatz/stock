@@ -53,6 +53,13 @@ return [
     'account_number' => 'Số tài khoản',
     'birthday' => 'Ngày sinh',
     
-    'category'=>'Danh mục'
+    'category'=>'Danh mục',
+    'actual_number' => 'Số lượng thực',
+    'quantity_checked' => 'Số lượng đã kiểm tra',
+    'deviant' => 'Lệch lạc',
+    'date' => 'Ngày',
+    'create_date' => 'Ngày tạo',
+    'type' => 'Kiểu',
+    'history' => 'Lịch sử',
 ];
 ?>
