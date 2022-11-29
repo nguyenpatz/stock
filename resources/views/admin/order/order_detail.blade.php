@@ -53,7 +53,8 @@
 					<th>Create Date</th>
 					<th>Product</th>
 					<th>Amount</th>
-					<th>Price</th>
+					<th>Volume</th>
+					<th>Note</th>
 					<th style="width: 170px">Action</th>
 				</tr>
 			</thead>
@@ -63,7 +64,8 @@
 					<td>{{$row->create_date}}</td>
 					<td>{{$row->pname}}</td>
 					<td>{{$row->oamount}}</td>
-					<td>{{$row->oprice}}</td>
+					<td>{{$row->ovolume}}</td>
+					<td>{{$row->note}}</td>
 					<td><a href="/orderline_edit/{{$row->olid}}"><button  class="btn">Edit</button></a>
 						<a href="/orderline_delete/{{$row->olid}}"><button class="btn">Remove</button></a>
 					</td>
@@ -71,16 +73,6 @@
 				@endforeach
 			</tbody>
 		</table>
-	</div>
-	<div class="my-5">
-		<div>
-			Total Payment: <span class="h3 row ml-2">{{ $orders->total_payment }}
-				<p class="ml-1">VND</p>
-			</span>
-		</div>
-		<div>
-			<div class="container-fluid"></div>
-		</div>
 	</div>
 	</section>
 	<!-- /.content -->

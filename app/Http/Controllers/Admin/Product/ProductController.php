@@ -41,6 +41,7 @@ class ProductController extends Controller
         $data['state']= 'New';
         $template = Template::findOrFail($data['template_id']);
         $data['name']= $template->name;
+        $data['volume'] = $data['height']*$data['width']*$data['length'];
         $product = Product::create($data);
         $template->amount = Product::where('template_id',$product->template_id)->count();
         $template->save();
@@ -50,6 +51,7 @@ class ProductController extends Controller
     public function delete($id){
         $product = Product::findOrFail($id);
         $template = Template::findOrFail($product->template_id);
+        dd($product->state);
         if ($product->state == 	'Stored'){
             echo'<script>alert("Order has been shipped")</script>';
             return app('App\Http\Controllers\Admin\Product\TemplateController')->show($template->id);

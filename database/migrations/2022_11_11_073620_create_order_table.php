@@ -22,8 +22,8 @@ return new class extends Migration
                 $table->dateTime('expiration_date');
                 $table->dateTime('received_date');
                 $table->foreignId('employee_id')->constrained('employee');
-                $table->double('total_payment');
-                $table->text('payment_term');
+                $table->foreignId('pricelist_id')->constrained('price_list');
+                $table->text('payment_term')->nullable();
                 $table->text('state');
             });
         }

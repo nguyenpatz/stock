@@ -5,14 +5,11 @@
 	<div class="row">
 		<div class="col-6">
 			<p>
-				<label for="title">Product</label><br>
-			
-			
+				<label for="title">Product Template</label><br>
 			<div class="d-flex align-items-center">
-				<select class="form-control" name="product_id"
-					aria-label="Default select example">
-					<option selected>Open this select menu</option> 
-					@foreach($products as $row)
+				<select class="form-control" name="template_id">
+					<option selected>Open this select menu</option>
+					@foreach($templates as $row)
 						<option value="{{$row->id}}">{{$row->name}}</option>
 					@endforeach
 				</select>
@@ -20,17 +17,17 @@
 			</p>
 			<div>
 				<p>
-					<label for="title">Price</label><br> <input type="number"
-						class="form-control" name="price" value="">
-				</p>
-				<p>
-					<label for="title">Create Date</label><br> <input
-						type="datetime-local" class="form-control" name="create_date"
+					<label for="title">Create Date</label><br>
+					<input type="datetime-local" class="form-control" name="create_date"
 						value="{{date('Y-m-d H:i:s')}}">
+				</p>
+                <p>
+                    <label for="note">Note</label><br>
+					<textarea class="form-control" name="note"></textarea>
 				</p>
 				<p>
 					<input type="number" class="form-control" name="order_id"
-						value="{{$id}}">
+						value="{{$id}}" disabled >
 				</p>
 			</div>
 			<div class="col-6">

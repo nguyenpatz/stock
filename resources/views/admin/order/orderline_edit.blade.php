@@ -7,8 +7,8 @@
 			<p>
 				<label for="title">Product</label><br> <select class="form-control"
 					name="product_id" aria-label="Default select example">
-					<option selected>Open this select menu</option> @foreach($products
-					as $row)
+					<option selected>Open this select menu</option>
+					@foreach($templates as $row)
 					<option value="{{$row->id}}">{{$row->name}}</option> @endforeach
 				</select>
 			</p>

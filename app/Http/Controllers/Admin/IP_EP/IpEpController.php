@@ -131,14 +131,14 @@ class IpEpController extends Controller
         return redirect('ipep');
     }
     public function done(Request $request, $id){
-        dd($request->all());
         $ipep = IpEp::findOrFail($id);
         $order = Order::findOrFail($ipep->order_id);
         $order_line = DB::table('order_line')->where('order_id','=',$order->id)->select('*');
         foreach($order_line->get() as $row){
             $product = Template::findOrFail($row->product_id);
+            if ($product->state == 'New'){
             $product->state='Stored';
-            $product->save();
+            $product->save();}
         }
         $ipep->status = 'Done';
         $ipep->save();

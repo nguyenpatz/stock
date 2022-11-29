@@ -10,6 +10,7 @@
 		<div class="col-2">
 			<a href="/ipep_delete/{{$ipeps->id}}"><button class="btn btn-danger">Delete</button></a></br>
 			<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
+			<a href="/ipep_done/{{$ipeps->id}}"><button class="btn btn-danger">Done</button></a></br>
 		</div>
 		<div class="col-4">
 			<ul>

@@ -334,7 +334,7 @@ Route::post('ipep/store', [
     'store'
 ]);
 
-Route::post('/ipep_done/{id}', [
+Route::get('/ipep_done/{id}', [
     IpEpController::class,
     'done'
 ]);

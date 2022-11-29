@@ -26,11 +26,10 @@
 				<li>Amount: {{$template->amount}}</li>
 			</ul>
 		</div>
-		<div class="col-2">
-			Note: {{$template->note}}
-		</div>
 	</div>
-
+    <div class="container py-5 border">
+			Note: {{$template->note}}
+    </div>
 	<div class="container-fluid mt-3">
 		<a href="/product_create/{{$template->id}}">
 			<button class="btn btn-success">ADD</button>

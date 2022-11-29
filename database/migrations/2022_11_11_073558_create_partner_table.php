@@ -23,8 +23,7 @@ return new class extends Migration
                 $table->string('email');
                 $table->text('note')->nullable();
                 $table->date('birthday');
-                // $table->intenger('bank_id');
-                // $table->foreign('bank_id')->references('id')->on('bank_account');
+                
 
             });
         }

@@ -10,56 +10,47 @@
 			</p>
 			<p>
 				<label for="title">Price</label><br>
-			
-			
+
+
 			<div class="d-flex">
 				<input type="number" class="form-control" name="price" value=""> <span>đ</span>
-			</div>
-			</p>
-			<p>
-				<label for="title">Price Cost</label><br>
-			
-			
-			<div class="d-flex">
-				<input type="number" class="form-control" name="price_cost" value="">
-				<span>đ</span>
 			</div>
 			</p>
 			<p>
 				<label for="exampleColorInput" class="form-label">Color</label>
 				<input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="" title="Choose your color">
 			</p>
-			
+
 		</div>
 		<div class="col-6">
 			<p>
 				<label for="title">Height</label><br>
-			
-			
+
+
 			<div class="d-flex">
 				<input type="number" class="form-control" name="height" value=""> <span>m</span>
 			</div>
 			</p>
 			<p>
 				<label for="title">Length</label><br>
-			
-			
+
+
 			<div class="d-flex">
 				<input type="number" class="form-control" name="length" value=""> <span>m</span>
 			</div>
 			</p>
 			<p>
 				<label for="title">Width</label><br>
-			
-			
+
+
 			<div class="d-flex">
 				<input type="number" class="form-control" name="width" value=""> <span>m</span>
 			</div>
 			</p>
 			<p>
 				<label for="title">Weight</label><br>
-			
-			
+
+
 			<div class="d-flex">
 				<input type="number" class="form-control" name="weight" value=""> <span>kg</span>
 			</div>

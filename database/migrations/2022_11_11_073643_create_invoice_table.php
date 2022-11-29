@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained('order');
             $table->dateTime('create_date');
             $table->date('date_payment');
-            $table->text('payment_term');
+            $table->text('payment_term')->nullable();
             $table->double('total_payment');
             $table->double('debt')->nullable();
             $table->text('state');
