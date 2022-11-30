@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId('partner_id')->constrained('partner');
             $table->foreignId('order_id')->constrained('order');
             $table->dateTime('create_date');
-            $table->date('date_payment');
+            $table->date('date_payment')->nullable();
             $table->text('payment_term')->nullable();
-            $table->double('total_payment');
+            $table->double('total_payment')->nullable();
             $table->double('debt')->nullable();
             $table->text('state');
         });

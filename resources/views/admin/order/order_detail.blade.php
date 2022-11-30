@@ -54,7 +54,6 @@
 				<tr class="bg-success">
 					<th>Create Date</th>
 					<th>Product</th>
-					<th>Amount</th>
 					<th>Volume</th>
 					<th>Note</th>
 					<th style="width: 170px">Action</th>
@@ -65,7 +64,6 @@
 				<tr>
 					<td>{{$row->create_date}}</td>
 					<td>{{$row->pname}}</td>
-					<td>{{$row->oamount}}</td>
 					<td>{{$row->volume}} <sup>m<sup>3</sup></sup></td>
 					<td>{{$row->note}}</td>
 					<td><a href="/orderline_edit/{{$row->olid}}"><button  class="btn">Edit</button></a>
