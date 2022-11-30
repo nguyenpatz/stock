@@ -13,21 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('order')) {
             Schema::create('order', function (Blueprint $table) {
                 $table->id();
                 $table->text('name');
                 $table->foreignId('partner_id')->constrained('partner');
                 $table->dateTime('create_date');
                 $table->dateTime('expiration_date');
-                $table->dateTime('received_date');
+                $table->dateTime('received_date')->nullable();
                 $table->foreignId('employee_id')->constrained('employee');
-                $table->foreignId('pricelist_id')->constrained('price_list');
                 $table->text('payment_term')->nullable();
+                $table->string('type');
                 $table->text('state');
             });
         }
-    }
 
     /**
      * Reverse the migrations.
@@ -36,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('order');
+        Schema::dropIfExists('order');
     }
 };

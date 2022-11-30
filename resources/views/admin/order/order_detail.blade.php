@@ -11,11 +11,12 @@
 		<div class="container row">
 			<div class="col-2">
 				<a href="/order_edit/{{$orders->oid}}"><button class="btn btn-info"
-						style="width: 70px">Edit</button></a> <a
-					href="/order_delete/{{$orders->oid}}"><button
-						class="btn btn-danger" style="width: 70px">Unlink</button></a> <a
-					href="/order_done/{{$orders->oid}}"><button
-						class="btn btn-success mt-1" style="width: 70px">Done</button></a>
+						style="width: 70px">Edit</button></a>
+                <a href="/order_delete/{{$orders->oid}}">
+                    <button class="btn btn-danger" style="width: 70px">Delete</button></a>
+                <a href="/order_done/{{$orders->oid}}">
+                    <button class="btn btn-success mt-1" style="width: 70px">Import</button>
+                </a>
 				<button class="btn btn-success mt-1" style="width: 70px">Sent</button>
 				<a href="/create_invoice_from_order/{{$orders->oid}}"><button
 						class="btn btn-success mt-1" style="width: 145px">Create Invoice</button></a>
@@ -32,6 +33,7 @@
 				<ul>
 					<li>{{__('lang.rdate')}}: {{ $orders->received_date }}</li>
 					<li>{{__('lang.employee')}}: {{ $orders->epname }}</li>
+					<li>Type: {{ $orders->type }}</li>
 				</ul>
 			</div>
 			<div class="col-2 align-self-center">
@@ -64,7 +66,7 @@
 					<td>{{$row->create_date}}</td>
 					<td>{{$row->pname}}</td>
 					<td>{{$row->oamount}}</td>
-					<td>{{$row->ovolume}}</td>
+					<td>{{$row->volume}} <sup>m<sup>3</sup></sup></td>
 					<td>{{$row->note}}</td>
 					<td><a href="/orderline_edit/{{$row->olid}}"><button  class="btn">Edit</button></a>
 						<a href="/orderline_delete/{{$row->olid}}"><button class="btn">Remove</button></a>

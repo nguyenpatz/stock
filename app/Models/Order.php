@@ -17,6 +17,7 @@ class Order extends Model
         'employee_id',
         'pricelist_id',
         'payment_term',
+        'type',
         'state',
     ];
     public $timestamps = False;

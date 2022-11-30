@@ -369,3 +369,27 @@ Route::get('/template_delete/{id}', [
     TemplateController::class,
     'delete'
 ]);
+Route::get('/order_view_all', [
+    OrderController::class,
+    'viewall'
+]);
+Route::get('/product_fail', [
+    ProductController::class,
+    'view_product_fail'
+]);
+Route::get('save/{id}',[
+    IpEpController::class,
+    'import'
+]);
+Route::get('template_save/{id}', [
+    TemplateController::class,
+    'template_save'
+]);
+Route::get('/product_stored', [
+    ProductController::class,
+    'view_product_stored'
+]);
+Route::get('/templatereload/{$id}', [
+    TemplateController::class,
+    'action_refresh'
+]);

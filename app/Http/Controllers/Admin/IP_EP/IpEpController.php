@@ -50,7 +50,7 @@ class IpEpController extends Controller
         $orderline = $orderline->get();
         $array = array();
         foreach($orderline as $row){
-            array_push($array, Template::findOrFail($row->product_id));
+            array_push($array, Template::findOrFail($row->template_id));
         }
         $array2= array();
         foreach($array as $item){
@@ -81,7 +81,7 @@ class IpEpController extends Controller
         $orderline = $orderline->get();
         $array = array();
         foreach($orderline as $row){
-            array_push($array, Template::findOrFail($row->product_id));
+            array_push($array, Template::findOrFail($row->template_id));
         }
         $array2= array();
         foreach($array as $item){
@@ -147,7 +147,13 @@ class IpEpController extends Controller
         return redirect('ipep');
     }
     public function action_done($id){
-        Order::findOrFail($id)->update(['state'=>'Created IP/EP']);
+        $order = Order::findOrFail($id);
+        if ($order->type=='export'){
+             echo'<script>alert("Nhập hàng chỉ dành cho đơn hàng loại nhập")</script>';
+             return redirect()->back();
+        }
+        else{
+            $order->update(['state'=>'Created IP/EP']);
         $ipep = IpEp::where('order_id',$id)->select('id')->get();
         $title = 'Ipep create';
         if ($ipep->value('id') == null){
@@ -156,6 +162,7 @@ class IpEpController extends Controller
              echo'<script>alert("Order has been shipped")</script>';
              return app('App\Http\Controllers\Admin\Order\OrderController')->show($id);
             }
+        }
     }
 
     public function fail($id){
@@ -173,5 +180,11 @@ class IpEpController extends Controller
         $product->state = 'Fail';
         $product->save();
         return redirect('template_view');
+    }
+    public function import($id){
+        $product = Product::findOrFail($id);
+        $product->state = 'Stored';
+        $product->save();
+        return redirect('ipep');
     }
 }
