@@ -16,6 +16,7 @@ class OrderController extends Controller
     public function index() {
         $order = DB::table('order')->join('partner','partner.id','=','order.partner_id')
         ->join('employee','employee.id','=','order.employee_id')
+        ->where('state','New')
         ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->paginate(4);
         $title = __('lang.orders');
         $action = 'order_create';
@@ -52,8 +53,13 @@ class OrderController extends Controller
         $data['name']='Oder';
         $data['create_date']=date('Y-m-d');
         $order = Order::create($data);
-        $order->update(['name'=>'Order'.$order->id]);
-        return redirect('order');
+        if ($data['type']=='import'){
+            $order->update(['name'=>'Order Import ST: '.$order->id]);
+        }
+        else if ($data['type']=='export'){
+            $order->update(['name'=>'Order Export ST: '.$order->id]);
+        }
+        return redirect('/order/'.$order->id.'');
     }
 
     public function edit($id)
@@ -85,6 +91,11 @@ class OrderController extends Controller
         $order_line =DB::table('order_line')->where('order_id','=',$id)->select('*')->get();
         $invoice = new Invoice;
         $order = Order::findOrFail($id);
+        if($order->type=='import'){
+            echo'<script>alert("Hóa đơn chỉ được tạo khi xuất hàng")</script>';
+            return redirect('/order/'.$order->id.'');
+        }
+        else{
         $title = 'Invoice';
         $invoice1 = Invoice::where('order_id',$id)->get();
         if ($invoice1->value('id') == null){
@@ -114,7 +125,7 @@ class OrderController extends Controller
             echo'<script>alert("Order has been invoice")</script>';
             return $this->show($id);
             }
-
+        }
     }
 
     public function delete($id){
@@ -144,5 +155,13 @@ class OrderController extends Controller
             echo'<script>alert("Not found")</script>';
             return $this->index();
             }
+    }
+
+    public function viewall(){
+        $order = DB::table('order')->join('partner','partner.id','=','order.partner_id')
+        ->join('employee','employee.id','=','order.employee_id')
+        ->select('*','order.id as oid','order.name as odname','partner.name as ptname','employee.name as epname')->paginate(4);
+        $title = __('lang.orders');
+        return view('/admin/order/order', compact('order','title'));
     }
 }

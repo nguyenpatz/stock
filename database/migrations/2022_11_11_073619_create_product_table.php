@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('height');
             $table->float('length');
             $table->float('width');
-            $table->float('volume');
+            $table->double('volume');
             $table->date('import_date')->nullable();
             $table->date('export_date')->nullable();
             $table->float('weight')->nullable();

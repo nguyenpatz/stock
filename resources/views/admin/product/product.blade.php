@@ -14,7 +14,6 @@
 		<tr class="bg-success">
 			<th>{{__('lang.name')}}</th>
 			<th>{{__('lang.price')}}</th>
-			<th>{{__('lang.price_cost')}}</th>
 			<th>{{__('lang.state')}}</th>
 			<th>{{__('lang.height')}}</th>
 			<th>{{__('lang.width')}}</th>
@@ -28,8 +27,7 @@
 		<tr>
 			<td><a href="/product/{{$row->pid}}">{{$row->tname}}</a></td>
 			<td>{{$row->price}} <sup>đ</sup></td>
-			<td>{{$row->price_cost}} <sup>đ</sup></td>
-			<td>{{$row->state}}</td>
+			<td>{{$row->pstate}}</td>
 			<td>{{$row->height}} <sup>m</sup></td>
 			<td>{{$row->width}} <sup>m</sup></td>
 			<td>{{$row->length}} <sup>m</sup></td>

@@ -22,7 +22,7 @@ class TemplateController extends Controller
     public function show($id)
     {
         $product = DB::table('product')->join('template','template.id','product.template_id')
-        ->where('product.template_id', '=', $id)->select('*','product.id as pid');
+        ->where('product.template_id', '=', $id)->select('*','product.id as pid','product.state as pstate');
         $product = $product->get();
         $template = DB::table('template')->where('id',$id)->select('*')->first();
         $category = DB::table('product_category')->where('id',$template->category_id)->first();
@@ -39,7 +39,7 @@ class TemplateController extends Controller
         return view('/admin/product/template_create', compact('title','category'));
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $data = $request->all();
         $data['state']= 'New';
@@ -72,5 +72,21 @@ class TemplateController extends Controller
         $product->delete();
         $template->delete();
         return $this->index();
+    }
+
+    public function template_save($id){
+        $template = Template::findOrFail($id);
+        $template->state = 'Stored';
+        $template->save();
+        return redirect()->back();
+    }
+
+    public function action_refresh($id){
+        $template  = Template::findOrFail($id);
+        $product = Product::where('template_id',$id);
+        $order = Order::where('template_id',$id);
+        $template->amount = $product->count();
+        $order->volume = $product->sum('volume');
+        return redirect('/template/'.$id.'');
     }
 }

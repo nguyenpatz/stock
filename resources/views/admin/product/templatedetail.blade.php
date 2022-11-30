@@ -10,7 +10,13 @@
 			<a href="/template_edit/{{$template->id}}">
 				<button class="btn btn-info" style="width: 70px">Edit</button></a>
 			<a href="/template_delete/{{$template->id}}">
-				<button class="btn btn-danger" style="width: 70px">Unlink</button></a>
+				<button class="btn btn-danger" style="width: 70px">Unlink</button>
+            </a>
+			<a href="/template_save/{{$template->id}}">
+				<button class="btn btn-danger" style="width: 70px">Store</button>
+            </a>
+<!--            <a href="/templatereload/{{$template->id}}"/>
+                <button class="btn brn-info">Reload</button></a>-->
 		</div>
 		<div class="col-4">
 			<ul>
@@ -27,8 +33,9 @@
 			</ul>
 		</div>
 	</div>
+	<label>Note</label>
     <div class="container py-5 border">
-			Note: {{$template->note}}
+			{{$template->note}}
     </div>
 	<div class="container-fluid mt-3">
 		<a href="/product_create/{{$template->id}}">
@@ -43,6 +50,7 @@
 					<th>Weight</th>
 					<th>Color</th>
 					<th>Price</th>
+					<th>Volume</th>
 					<th>State</th>
 					<th>Action</th>
 				</tr>
@@ -50,13 +58,14 @@
 			<tbody>
 				@foreach($product as $row)
 				<tr>
-					<td><a href="/product/{{$row->pid}}">{{ $row->height}}</a></td>
-					<td>{{ $row->width }}</td>
-					<td>{{ $row->length }}</td>
-					<td>{{ $row->weight}}</td>
+					<td><a href="/product/{{$row->pid}}">{{ $row->height}} <sup>m</sup></a></td>
+					<td>{{ $row->width }} <sup>m</sup></td>
+					<td>{{ $row->length }} <sup>m</sup></td>
+					<td>{{ $row->weight}} <sup>kg</sup></td>
 					<td><input type="color" value="{{$row->color}}" class="color"></td>
 					<td>{{ $row->price}}</td>
-					<td>{{ $row->state}}</td>
+					<td>{{ $row->volume}} <sup>m<sup>3</sup></sup></td>
+					<td>{{ $row->pstate}}</td>
 					<td><a href="/product_delete/{{$row->pid}}">Remove</a>
 						<a href="/product_edit/{{$row->pid}}">Edit</a>
 					</td>

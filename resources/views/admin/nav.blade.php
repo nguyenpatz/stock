@@ -18,9 +18,16 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/invoice" class="nav-link">{{__('lang.invoice')}}</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/warehouse" class="nav-link">{{__('lang.warehouse')}}</a>
-      </li>
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="/warehouse" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{__('lang.warehouse')}} </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/warehouse">{{__('lang.warehouse')}}</a>
+            <a class="dropdown-item" href="/product_fail">Product Fail</a>
+            <a class="dropdown-item" href="/product_stored">Product Store</a>
+        </div>
+        </div>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/ipep" class="nav-link">{{__('lang.ipep')}}</a>
       </li>

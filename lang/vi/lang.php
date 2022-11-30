@@ -10,7 +10,6 @@ return [
     'state' => 'Trạng thái',
     'payment_term' => 'Chính sách thanh toán',
 
-    'state1' => 'Mới',
     'state2' => 'Báo giá',
     'state3' => 'Đơn bán',
     'state4' => 'Đã tạo phiếu giao',
@@ -52,7 +51,7 @@ return [
     'submit' => 'Xác nhận',
     'account_number' => 'Số tài khoản',
     'birthday' => 'Ngày sinh',
-    
+
     'category'=>'Danh mục',
     'actual_number' => 'Số lượng thực',
     'quantity_checked' => 'Số lượng đã kiểm tra',

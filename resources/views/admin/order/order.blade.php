@@ -6,6 +6,9 @@
 <a href="order_create">
 	<button class="btn btn-success">Create</button>
 </a>
+<a href="order_view_all">
+    <button class="btn btn-success">View all</button>
+</a>
 <div class="d-flex justify-content-end">{{ $order->links() }}</div>
 <section class="content">
 	<div class="container-fluid px-0">
@@ -19,8 +22,9 @@
 					<th>{{__('lang.edate')}}</th>
 					<th>{{__('lang.rdate')}}</th>
 					<th>{{__('lang.employee')}}</th>
-					<th>{{__('lang.total_payment')}}</th>
 					<th>{{__('lang.state')}}</th>
+					<th>Type</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,8 +36,10 @@
 					<td>{{$row->expiration_date }}</td>
 					<td>{{ $row->received_date }}</td>
 					<td>{{ $row->epname }}</td>
-					<td>{{ $row->total_payment }}<sup>đ</sup></td>
 					<td>{{ $row->state }}</td>
+					<td>{{ $row->type }}</td>
+					<td><a href="/order_delete/{{$row->oid}}">
+                    <button class="btn btn-danger" style="width: 70px">Delete</button></a></td>
 				</tr>
 				@endforeach
 			</tbody>

@@ -34,7 +34,14 @@
 				<label for="title">Payment term</label><br> <input type="text"
 					class="form-control" name="payment_term" value="">
 			</p>
-
+            <!-- type : nhập hàng hay xuất hàng			 -->
+				<label for="title">Type</label><br>
+				<select class="form-control"
+					name="type" aria-label="Default select example">
+					<option value="import">Import</option>
+					<option value="export">Export</option>
+				</select>
+            </p>
 			<p>
 				<button type="submit" class="form-control btn btn-success">Submit</button>
 			</p>

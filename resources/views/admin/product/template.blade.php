@@ -17,6 +17,7 @@
 			<th>{{__('lang.date_manufacture')}}</th>
 			<th>{{__('lang.date_expiry')}}</th>
 			<th>{{__('lang.state')}}</th>
+			<th>Note</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,6 +29,7 @@
 			<td>{{ $row->date_manufacture}}</td>
 			<td>{{$row->expiry_date }}</td>
 			<td>{{$row->state}}</td>
+			<td>{{$row->note}}</td>
 		</tr>
 		@endforeach
 	</tbody>

@@ -27,7 +27,7 @@
 				</p>
 				<p>
 					<input type="number" class="form-control" name="order_id"
-						value="{{$id}}" disabled >
+						value="{{$id}}" >
 				</p>
 			</div>
 			<div class="col-6">
