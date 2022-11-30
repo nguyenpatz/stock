@@ -19,7 +19,6 @@
 					<th>{{__('lang.name')}}</th>
 					<th>{{__('lang.partner')}}</th>
 					<th>{{__('lang.createdate')}}</th>
-					<th>{{__('lang.edate')}}</th>
 					<th>{{__('lang.rdate')}}</th>
 					<th>{{__('lang.employee')}}</th>
 					<th>{{__('lang.state')}}</th>

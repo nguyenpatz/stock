@@ -18,7 +18,6 @@ return new class extends Migration
                 $table->text('name');
                 $table->foreignId('partner_id')->constrained('partner');
                 $table->dateTime('create_date');
-                $table->dateTime('expiration_date');
                 $table->dateTime('received_date')->nullable();
                 $table->foreignId('employee_id')->constrained('employee');
                 $table->text('payment_term')->nullable();
